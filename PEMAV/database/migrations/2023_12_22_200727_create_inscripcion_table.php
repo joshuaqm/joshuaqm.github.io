@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('inscripcion', function (Blueprint $table) {
             $table->string('CLAVE_ALUMNO_INSCRITO', 40)->primary();
             $table->decimal('COSTO', 4);
+            $table->string('CLAVE_CURSO', 40)->index('CLAVE_CURSO_FK');
         });
     }
 
