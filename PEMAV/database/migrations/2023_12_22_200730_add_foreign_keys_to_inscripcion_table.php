@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('inscripcion', function (Blueprint $table) {
             $table->foreign(['CLAVE_ALUMNO_INSCRITO'], 'CLAVE_ALUMNO_INSCRITO_FK')->references(['CLAVE_ALUMNO'])->on('alumnos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['CLAVE_CURSO'], 'CLAVE_CURSO_FK')->references(['CLAVE_CURSO'])->on('curso')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('inscripcion', function (Blueprint $table) {
             $table->dropForeign('CLAVE_ALUMNO_INSCRITO_FK');
+            $table->dropForeign('CLAVE_CURSO_FK');
         });
     }
 };
