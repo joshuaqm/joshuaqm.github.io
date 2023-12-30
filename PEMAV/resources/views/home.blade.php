@@ -51,7 +51,7 @@
             </div>
             <div class="col-lg-auto ml-auto">
                 <!-- Botones a la derecha -->
-                <a href="{{ route('register') }}" class="btn btn-outline-light">Perfil</a>
+                <a href="{{ route('perfil') }}" class="btn btn-outline-light">Perfil</a>
                 <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar sesión</button>
             </div>
         </div>
