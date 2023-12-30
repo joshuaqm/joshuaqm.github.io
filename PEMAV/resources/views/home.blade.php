@@ -46,7 +46,7 @@
                                 <a class="nav-link nav-option" href="{{ route('calendario')}}">Asistencias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-option" href="{{ route('register')}}">Calificaciones</a>
+                                <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Calificaciones</a>
                             </li>
                         </ul>
                     </div>
