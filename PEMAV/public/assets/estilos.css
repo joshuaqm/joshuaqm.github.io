@@ -1,0 +1,34 @@
+/* Nuevo degradado para el header */
+.header {
+    /* Fallback para navegadores antiguos */
+    background: #fccb90;
+
+    /* Degradado para navegadores modernos */
+    background: linear-gradient(to right, #27A4F2, #1A2D99);
+}
+
+    
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    }
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+}
+/* En styles.css */
+.logo-header {
+    width: 70px; /* Ajusta el ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+    padding-top: 10px; /* Espaciado superior de 20px */
+    padding-bottom: 10px;
+}
+
+.header-text {
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}	    
