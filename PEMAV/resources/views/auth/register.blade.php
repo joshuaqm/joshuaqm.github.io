@@ -19,10 +19,14 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-auto">
-                <img src="{{ asset('images/PEMAV_logo.png') }}" alt="Descripción de la imagen" class="logo-header">
+              <a href="{{ route('home') }}">
+                  <img src="{{ asset('images/PEMAV_logo.png') }}" alt="Descripción de la imagen" class="logo-header">
+              </a>
             </div>
             <div class="col-lg">
+                <a href="{{ route('home') }}" style="text-decoration: none; color: black;">
                 <h3 class="header-text">PEMAV</h3>
+                </a>
             </div>
             <div class="col-lg-auto">
                 <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar sesión</button>

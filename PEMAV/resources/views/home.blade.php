@@ -23,9 +23,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-auto">
-                <!-- Imagen a la izquierda -->
-                <img src="{{ asset('images/PEMAV_logo.png') }}" alt="Descripción de la imagen" class="logo-header">
+            <!-- Enlace con la imagen -->
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('images/PEMAV_logo.png') }}" alt="Descripción de la imagen" class="logo-header">
+                </a>
             </div>
+
             <div class="col-lg text-center">
                 <!-- Opciones centradas -->
                 <nav class="navbar navbar-expand-lg navbar-light">
