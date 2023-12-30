@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\HorariosController;
 
 
 //Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -29,3 +30,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Descomentar la siguiente línea para que se requiera autenticación para acceder al perfil cuando este la conexion con la base de datos
 //Route::get('/perfil', [UserProfileController::class, 'show'])->name('perfil')->middleware('auth');
 Route::get('/perfil', [UserProfileController::class, 'show'])->name('perfil');
+
+//horarios
+//Descomentar la siguiente línea para que se requiera autenticación para acceder a los horarios cuando este la conexion con la base de datos
+//Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios')->middleware('auth');
+Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios');
+
