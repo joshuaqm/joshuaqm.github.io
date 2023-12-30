@@ -23,6 +23,12 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
+//forgot-password  
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('password.request');
+
+
 //home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

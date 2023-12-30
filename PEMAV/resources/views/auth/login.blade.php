@@ -48,7 +48,7 @@
                     <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Ingresar</button>
                   </div>
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <a href="{{ route('register') }}">¿Olvidaste tu contraseña?</a>
+                    <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                   </div>
                   <div class="d-flex align-items-center justify-content-center pb-4">
                     <p class="mb-0 me-2">¿No tienes una cuenta?</p>
