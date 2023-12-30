@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\HorariosController;
+use App\Http\Controllers\CalendarioController;
 
 
 //Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -42,3 +43,5 @@ Route::get('/perfil', [UserProfileController::class, 'show'])->name('perfil');
 //Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios')->middleware('auth');
 Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios');
 
+//calendario
+Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario');
