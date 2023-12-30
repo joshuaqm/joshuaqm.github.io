@@ -6,7 +6,13 @@
     /* Degradado para navegadores modernos */
     background: linear-gradient(to right, #27A4F2, #1A2D99);
 }
+.gradient-custom-2 {
+    /* Fallback para navegadores antiguos */
+    background: #fccb90;
 
+    /* Degradado para navegadores modernos */
+    background: linear-gradient(to right, #27A4F2, #1A2D99);
+}
     
     @media (min-width: 768px) {
     .gradient-form {
@@ -32,3 +38,10 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }	    
+
+.login-logo {
+    width: 300px; /* Ajusta el ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+    padding-top: 5px; /* Espaciado superior de 20px */
+    padding-bottom: 5px;
+}	
