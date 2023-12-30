@@ -45,3 +45,17 @@
     padding-top: 5px; /* Espaciado superior de 20px */
     padding-bottom: 5px;
 }	
+
+.nav-option{
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 2rem;
+}
+
+.color-hover:hover{
+    color: #8787fb;
+    cursor: pointer;
+}

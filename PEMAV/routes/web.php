@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+//Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 
 Route::get('/', function () {
@@ -18,3 +19,6 @@ Route::post('register', [RegisterController::class, 'register']);
 //login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+
+//home
+Route::get('/home', [HomeController::class, 'index'])->name('home');
