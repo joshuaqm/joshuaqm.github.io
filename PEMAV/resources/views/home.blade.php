@@ -53,7 +53,6 @@
                 </nav>
             </div>
             <div class="col-lg-auto ml-auto">
-                <!-- Botones a la derecha -->
                 <a href="{{ route('perfil') }}" class="btn btn-outline-light">Perfil</a>
                 <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar sesión</button>
             </div>
@@ -98,19 +97,19 @@
         <br><br>
         <div class="row text-center">
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('register') }}">
+                <a href="{{ route('asignatura') }}">
                     <img src="./images/imagen.jpg" alt="Imagen 1" class="img-fluid">
                     <p style="padding-top: 20px;">Asignatura 1</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('register') }}">
+                <a href="{{ route('asignatura') }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Asignatura 2</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('register') }}">
+                <a href="{{ route('asignatura') }}">
                     <img src="./images/imagen.jpg" alt="Imagen 3" class="img-fluid">
                     <p style="padding-top: 20px;">Asignatura 3</p>
                 </a>

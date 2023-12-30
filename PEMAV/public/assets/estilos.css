@@ -59,3 +59,11 @@
     color: #8787fb;
     cursor: pointer;
 }
+
+.subject-attributes{
+    color: #000;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 1.5rem;
+}

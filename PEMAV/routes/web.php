@@ -8,7 +8,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\CalificacionesController;
-
+use App\Http\Controllers\AsignaturaController;
 
 //Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
@@ -51,3 +51,9 @@ Route::get('/calendario', [CalendarioController::class, 'index'])->name('calenda
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las calificaciones cuando este la conexion con la base de datos
 //Route::get('/calificaciones', [CalificacionesController::class, 'index'])->name('calificaciones')->middleware('auth');
 Route::get('/calificaciones', [CalificacionesController::class, 'index'])->name('calificaciones');
+
+//asignatura
+//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
+//Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura')->middleware('auth');
+Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura');
+//Route::get('/asignatura/{nombre}', 'AsignaturaController@showAsignatura')->name('asignatura');
