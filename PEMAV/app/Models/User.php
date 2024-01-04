@@ -16,14 +16,16 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<string>
      */
+    //CLAVE_USUARIO_ALU	CLAVE_USUARIO_PROFE	CLAVE_USUARIO_DIRECTORA	CORREO	PERMISO	CONTRASENA	
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
         'CLAVE_USUARIO_ALU',
         'CLAVE_USUARIO_PROFE',
         'CLAVE_USUARIO_DIRECTORA',
         'PERMISO',
+        'CORREO',
+        'PERMISO',
+        'CONTRASENA'
         // Agrega los campos adicionales según los roles
         // ...
     ];
@@ -34,8 +36,6 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
         'CONTRASENA', // Agrega los campos que deseas ocultar
         // ...
     ];

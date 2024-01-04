@@ -19,14 +19,10 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-auto">
-              <a href="{{ route('home') }}">
-                  <img src="{{ asset('images/PEMAV_logo.png') }}" alt="Descripción de la imagen" class="logo-header">
-              </a>
+              <img src="{{ asset('images/PEMAV_logo.png') }}" alt="Descripción de la imagen" class="logo-header">
             </div>
             <div class="col-lg">
-                <a href="{{ route('home') }}" style="text-decoration: none; color: black;">
                 <h3 class="header-text">PEMAV</h3>
-                </a>
             </div>
         </div>
     </div>
@@ -45,7 +41,7 @@
                   <h4 class="mt-1 mb-5 pb-1 text-primary">Registrar nuevo usuario</h4>
                 </div>
 
-                <form action="{{route('register')}}" method="post">
+                <form action="{{ route('register') }}" method="POST">
                     @csrf
                   <div class="form-outline mb-4">
                     <label class="form-label text-primary" for="form2Example11">Nombre completo</label>
@@ -72,14 +68,15 @@
                   <div class="form-group mb-4">
                     <label class="text-primary" for="role_id">Tipo de usuario:</label>
                     <select name="role_id" id="role_id" class="form-control">
-                        <option value="1">Alumno</option>
+                        <option value="0">Alumno</option>
                     </select>
                    </div>
 
                   <div class="form-outline mb-4">
-                    <label class="form-label text-primary" for="form2Example22">Fecha de inscripción</label>
-                    <input type="date" name="fecha_inscripcion" id="form2Example22" class="form-control" />
+                     <label class="form-label text-primary" for="form2Example22">Fecha de inscripción</label>
+                      <input type="date" name="fecha_inscripcion" id="form2Example22" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly />
                   </div>
+
 
                   <div class="text-center pt-3 mb-5 pb-1"> 
                     <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registro</button>
