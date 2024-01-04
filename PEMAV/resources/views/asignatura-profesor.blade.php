@@ -41,67 +41,24 @@
         <p>Profesor: Nombre del Profesor</p>
     </div>
     <div class="col-md-6 subject-attributes">
-            <p>Grupo: Nombre del Grupo</p>
+            <p>Grupos: Nombre(s) de los Grupos</p>
         </div>
 
     <div class="col-md-6 subject-attributes">
-        <p>Salón: Número del Salón</p>
-    </div>
-    <div class="col-md-6 subject-attributes">
-        <p>Calificación: Valor de la Calificación</p>
+        <p>Salones: Número del Salón</p>
     </div>
 
     <br> 
-
-    <h3>Calificaciones de examenes:</h3>
-    <div class="text-center mt-4">
-        
-    <style>
-        table {
-            width: 80%; /* Ancho de la tabla */
-            margin: auto; /* Centrar la tabla */
-            border-collapse: collapse; /* Colapsar los bordes de la tabla */
-        }
-        th, td {
-            padding: 10px; /* Añadir espaciado interno a las celdas */
-            text-align: center; /* Centrar texto dentro de las celdas */
-            border: 1px solid #000; /* Añadir bordes a las celdas */
-        }
-        th {
-            background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
-        }
-    </style>
-    <table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Examen 1</th>
-            <th>Examen 2</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Grado</td>
-            <td>Grado</td>
-            <td>Grado</td>
-
-        </tr>
-        <tr>
-            <td>Tipo</td>
-            <td>Tipo</td>
-            <td>Tipo</td>
-
-        </tr>
-        <tr>
-            <td>Calificacion</td>
-            <td>Calificacion</td>
-            <td>Calificacion</td>
-
-        </tr>
-
-    </tbody>
-</table>
+    <hr>
+    <h3>Seleccionar acciones:</h3>
+    <div class="col-lg-auto ml-auto">
+        <br>
+        <a href="{{ route('perfil') }}" class="btn btn-primary">Subir calificaciones de nuevo examen</a>
+        <br>
+    </div>
+    <div>
+        <br><br><br>
+        <a href="{{ route('perfil') }}" class="btn btn-primary">Modificar calificaciones de examen existente</a>
     </div>
 </section>
 
