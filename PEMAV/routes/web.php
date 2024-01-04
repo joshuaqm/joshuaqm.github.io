@@ -11,6 +11,7 @@ use App\Http\Controllers\CalificacionesController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\AsignaturaProfesorController;
 use App\Http\Controllers\NuevoExamenController;
+use App\Http\Controllers\ModificarCalificacionesController;
 
 //Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
@@ -71,3 +72,8 @@ Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'
 //Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen')->middleware('auth');
 Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen');
 Route::get('/nuevo-examen', [NuevoExamenController::class, 'mostrarVista'])->name('nuevo-examen');
+
+//modificar-calificaciones
+//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
+//Route::get('/modificar-calificaciones', [ModificarCalificacionesController::class, 'index'])->name('modificar-calificaciones')->middleware('auth');
+Route::get('/modificar-calificaciones', [ModificarCalificacionesController::class, 'index'])->name('modificar-calificaciones');
