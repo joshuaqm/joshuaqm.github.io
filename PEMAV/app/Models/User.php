@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'PERMISO' => 'binary', // Ajusta los casts según los tipos de datos en la base de datos
+        'PERMISO' => 'int', // Ajusta los casts según los tipos de datos en la base de datos
         // ...
     ];
 
