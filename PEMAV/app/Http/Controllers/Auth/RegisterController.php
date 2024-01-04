@@ -32,9 +32,9 @@ class RegisterController extends Controller
         // Crear el usuario en la tabla 'usuarios''
         //CLAVE_USUARIO_ALU	CLAVE_USUARIO_PROFE	CLAVE_USUARIO_DIRECTORA
         $usuario = User::create([
-            //'CLAVE_USUARIO_ALU' => '1',
-            //'CLAVE_USUARIO_PROFE' => '1',
-            //'CLAVE_USUARIO_DIRECTORA' => '1',
+            'CLAVE_USUARIO_ALU' => '1',
+            'CLAVE_USUARIO_PROFE' => '1',
+            'CLAVE_USUARIO_DIRECTORA' => '1',
             'CORREO' => $request->email,
             'PERMISO' => $request->role_id,
             'CONTRASENA' =>$request->password,

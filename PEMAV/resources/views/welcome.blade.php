@@ -63,7 +63,7 @@
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4 w-100">
                     <div class="d-flex flex-column justify-content-center align-items-center h-100">
-                        <h1 class="mb-4">¡Bienvenid@!</h1>
+                        <h2 class="mb-4">¡Bienvenid@!</h2>
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('images/PEMAV_icon.png') }}" alt="Descripción de la imagen" class="login-logo">
                         </div>
