@@ -19,7 +19,6 @@ class Alumnos extends Model
     protected $fillable = [
         'CLAVE_ALUMNO',
         'CLAVE_CURSO_DADO',
-        'QR',
         'AVANCE_CREDITOS',
         'FECHA_INSCRIPCION',
         'NOMBRE_ALU'

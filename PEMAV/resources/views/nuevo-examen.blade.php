@@ -35,32 +35,40 @@
     </div>
 </div>
 <section class='container my-5'>
-    <h1 class="mb-4">Asignatura: Asignatura n</h1>
-
-    <div class="col-md-6 subject-attributes">
-        <p>Profesor: Nombre del Profesor</p>
-    </div>
-    <div class="col-md-6 subject-attributes">
-            <p>Grupos: Nombre(s) de los Grupos</p>
+    <h1 class="mb-4">Subir calificaciones de nuevo examen</h1>
+    <br>
+    <form action="{{ route('nuevo-examen') }}" method="POST">
+        @csrf
+        <div class="col-md-6 exam-attributes">
+            <p>Ingresa el tipo de examen:</p>
+            <input type="text" name="tipo_examen" placeholder="Tipo de examen" class="form-control mb-2" required>
+            <p>Ingresa el grado de examen:</p>
+            <input type="text" name="grado_examen" placeholder="Grado de examen" class="form-control mb-2" required>
         </div>
 
-    <div class="col-md-6 subject-attributes">
-        <p>Salones: Número del Salón</p>
-    </div>
-
-    <br> 
-    <hr>
-    <h3>Seleccionar acciones:</h3>
-    <div class="col-lg-auto ml-auto">
-        <br>
-        <a href="{{ route('nuevo-examen') }}" class="btn btn-primary">Subir calificaciones de nuevo examen</a>
-        <br>
-    </div>
-    <div>
-        <br><br><br>
-        <a href="{{ route('perfil') }}" class="btn btn-primary">Modificar calificaciones de examen existente</a>
-    </div>
+    
+    <br>
+    <p>Ingresa las calificaciones de cada alumno:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre del Alumno</th>
+                <th>Calificación</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($alumnos as $alumno)
+            <tr>
+                <td>{{ $alumno->NOMBRE_ALU }}</td>
+                <td><input type="number" name="calificaciones[{{ $alumno->id }}]" class="form-control" placeholder="Calificación" required></td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Registrar examen</button>
+    </form>
 </section>
+
 
 
 

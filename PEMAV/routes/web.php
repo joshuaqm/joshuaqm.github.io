@@ -10,6 +10,7 @@ use App\Http\Controllers\CalendarioController;
 use App\Http\Controllers\CalificacionesController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\AsignaturaProfesorController;
+use App\Http\Controllers\NuevoExamenController;
 
 //Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
@@ -64,3 +65,9 @@ Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignat
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
 //Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'])->name('asignatura-profesor')->middleware('auth');
 Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'])->name('asignatura-profesor');
+
+//nuevo-examen
+//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
+//Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen')->middleware('auth');
+Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen');
+Route::get('/nuevo-examen', [NuevoExamenController::class, 'mostrarVista'])->name('nuevo-examen');
