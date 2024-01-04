@@ -28,9 +28,6 @@
                 <h3 class="header-text">PEMAV</h3>
                 </a>
             </div>
-            <div class="col-lg-auto">
-                <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar sesión</button>
-            </div>
         </div>
     </div>
 </div>
@@ -76,8 +73,6 @@
                     <label class="text-primary" for="role_id">Tipo de usuario:</label>
                     <select name="role_id" id="role_id" class="form-control">
                         <option value="1">Alumno</option>
-                        <option value="2">Profesor</option>
-                        <option value="3">Administrador</option>
                     </select>
                    </div>
 
@@ -86,7 +81,7 @@
                     <input type="date" name="fecha_inscripcion" id="form2Example22" class="form-control" />
                   </div>
 
-                  <div class="text-center pt-3 mb-5 pb-1"> <!-- Ajusta el valor de 'pt-3' para más espacio superior -->
+                  <div class="text-center pt-3 mb-5 pb-1"> 
                     <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registro</button>
                   </div>
                 </form>

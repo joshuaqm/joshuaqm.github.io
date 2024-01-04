@@ -99,19 +99,61 @@
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura') }}">
                     <img src="./images/imagen.jpg" alt="Imagen 1" class="img-fluid">
-                    <p style="padding-top: 20px;">Asignatura 1</p>
+                    <p style="padding-top: 20px;">Español</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura') }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
-                    <p style="padding-top: 20px;">Asignatura 2</p>
+                    <p style="padding-top: 20px;">Matemáticas</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura') }}">
                     <img src="./images/imagen.jpg" alt="Imagen 3" class="img-fluid">
-                    <p style="padding-top: 20px;">Asignatura 3</p>
+                    <p style="padding-top: 20px;">Habilidad Matemática</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Habilidad Verbal</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Física</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Química</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Biología</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Historia</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Geografía</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <a href="{{ route('asignatura') }}">
+                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <p style="padding-top: 20px;">Formación Cívica y Ética</p>
                 </a>
             </div>
         </div>
