@@ -4,16 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class Calificaciones extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('usuarios', function (Blueprint $table) {
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+        Schema::create('calificaciones', function (Blueprint $table) {
+            $table->id('id_examen');
+            $table->date('fecha_examen');
+            $table->float('calificacion');        
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('calificaciones');
     }
 };
