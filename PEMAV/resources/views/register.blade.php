@@ -45,38 +45,32 @@
                     @csrf
                   <div class="form-outline mb-4">
                     <label class="form-label text-primary" for="form2Example11">Nombre completo</label>
-                    <input type="text" name="name" id="form2Example11" class="form-control"
+                    <input type="text" name="nombre" id="nombre" class="form-control"
                       placeholder="Ingresa tu nombre" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label text-primary" for="form2Example11">Correo electrónico</label>
-                    <input type="email" name="email" id="form2Example11" class="form-control"
+                    <input type="email" name="correo" id="correo" class="form-control"
                       placeholder="Ingresa tu correo electrónico" />
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label text-primary" for="form2Example22">Contraseña</label>
-                    <input type="password" name="password" id="form2Example22" class="form-control" />      
+                    <input type="password" name="contrasena" id="contrasena" class="form-control" />      
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label text-primary" for="form2Example22">Confirma la contraseña</label>
-                    <input type="password" name="password_confirmation" id="form2Example22" class="form-control" />      
+                    <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="form-control" />      
                   </div>
 
                   <div class="form-group mb-4">
-                    <label class="text-primary" for="role_id">Tipo de usuario:</label>
-                    <select name="role_id" id="role_id" class="form-control">
-                        <option value="0">Alumno</option>
+                    <label class="text-primary" for="permiso">Tipo de usuario:</label>
+                    <select name="permiso" id="permiso" class="form-control">
+                      <option value="0">Alumno</option>
                     </select>
-                   </div>
-
-                  <div class="form-outline mb-4">
-                     <label class="form-label text-primary" for="form2Example22">Fecha de inscripción</label>
-                      <input type="date" name="fecha_inscripcion" id="form2Example22" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly />
                   </div>
-
 
                   <div class="text-center pt-3 mb-5 pb-1"> 
                     <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registro</button>

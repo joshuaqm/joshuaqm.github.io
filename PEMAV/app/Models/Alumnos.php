@@ -14,15 +14,9 @@ class Alumnos extends Model
      *
      * @var array<string>
      */
-    //CLAVE_ALUMNO	CLAVE_CURSO_DADO	QR	AVANCE_CREDITOS	FECHA_INSCRIPCION	NOMBRE_ALU	
-
     protected $fillable = [
-        'CLAVE_ALUMNO',
-        'CLAVE_CURSO_DADO',
-        'AVANCE_CREDITOS',
-        'FECHA_INSCRIPCION',
-        'NOMBRE_ALU'
-        // ... otros campos que desees guardar en 'alumnos'
+        'id_alumno',
+
     ];
 
     /**
@@ -32,6 +26,4 @@ class Alumnos extends Model
      */
     protected $table = 'alumnos'; // Ajusta al nombre de tu tabla
 
-    // Define relaciones, mutadores, accesores u otros métodos según sea necesario
-    // ...
 }

@@ -11,52 +11,27 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<string>
-     */
-    //CLAVE_USUARIO_ALU	CLAVE_USUARIO_PROFE	CLAVE_USUARIO_DIRECTORA	CORREO	PERMISO	CONTRASENA	
-
     protected $fillable = [
-        'CLAVE_USUARIO_ALU',
-        'CLAVE_USUARIO_PROFE',
-        'CLAVE_USUARIO_DIRECTORA',
-        'PERMISO',
-        'CORREO',
-        'PERMISO',
-        'CONTRASENA'
-        // Agrega los campos adicionales según los roles
-        // ...
+        'id_usuario', 
+        'correo',
+        'nombre',
+        'contrasena',
+        'permiso'
+        // ... otros campos que desees guardar en 'usuarios'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<string>
-     */
     protected $hidden = [
-        'CONTRASENA', // Agrega los campos que deseas ocultar
+        'contrasena',
         // ...
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'PERMISO' => 'int', // Ajusta los casts según los tipos de datos en la base de datos
+        'permiso' => 'int',
+        
         // ...
     ];
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'usuarios'; // Ajusta al nombre de tu tabla
+    protected $table = 'usuarios';
 
     // Define relaciones, mutadores, accesores u otros métodos según sea necesario
     // ...
