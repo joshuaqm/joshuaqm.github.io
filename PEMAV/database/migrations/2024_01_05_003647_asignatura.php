@@ -12,11 +12,11 @@ class Asignatura extends Migration
     {
         Schema::create('asignatura', function (Blueprint $table) {
             $table->id('id_asignatura');
-            $table->bigInteger('id_examen')->unsigned()->nullable();
+            //$table->bigInteger('id_examen')->unsigned()->nullable();
             $table->string('nombre_asignatura');
 
             // Definición de la clave foránea
-            $table->foreign('id_examen')->references('id_examen')->on('calificaciones')->onDelete('cascade');
+            //$table->foreign('id_examen')->references('id_examen')->on('calificaciones')->onDelete('cascade');
         });
     }
 
