@@ -1,4 +1,13 @@
 /* Nuevo degradado para el header */
+.form-label,
+.form-control {
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para los botones */
+.primary-button {
+  font-family: Arial, sans-serif; 
+}
 .header {
     /* Fallback para navegadores antiguos */
     background: #fccb90;
