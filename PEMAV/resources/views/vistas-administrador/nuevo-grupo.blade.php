@@ -18,6 +18,14 @@
 @include('layouts.navigation')
 @if (auth()->user()->role == '1')
 
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<!-- Resto de tu código HTML -->
+
 <section class='container my-5'>
     <h1 class="mb-4">Crear nuevo grupo</h1>
     <br>
@@ -26,28 +34,26 @@
             @csrf
 
             <div class="mb-3">
-                <label for="id_grupo" class="form-label">Escriba el numero de grupo</label>
-                <input type="text" class="form-control" id="id_grupo" name="id_grupo" required>
-            </div>
-
-            <div class="mb-3">
                 <label for="id_asignatura" class="form-label">Seleccione asignatura:</label>
                 <select name="id_asignatura" id="id_asignatura" class="form-control" required>
                     <option value="">Seleccionar Asignatura</option>
-                    @foreach ($asignaturas as $asignatura)
-                        <option value="{{ $asignatura }}">{{ $asignatura }}</option>
+                    @foreach ($asignaturas as $id_asignatura => $id)
+                        <option value="{{ $id_asignatura }}">{{ $id }}</option>
                     @endforeach
                 </select>
             </div>
+
             <div class="mb-3">
                 <label for="id_profesor" class="form-label">Seleccione el profesor asignado:</label>
                 <select name="id_profesor" id="id_profesor" class="form-control" required>
                     <option value="">Seleccionar Profesor</option>
-                    @foreach ($profesores as $profesor)
-                        <option value="{{ $profesor }}">{{ $profesor }}</option>
+                    @foreach ($profesores as $id_profesor => $id)
+                        <option value="{{ $id_profesor }}">{{ $id }}</option>
                     @endforeach
                 </select>
             </div>
+
+
 
             <div class="mb-3">
                 <label for="salon" class="form-label">Escriba el salón:</label>
