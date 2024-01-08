@@ -18,6 +18,7 @@
                     <!-- Elementos de la barra de navegación -->
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav">
+                            @if (auth()->user()->role == '0')
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('horarios')}}">Horarios</a>
                             </li>
@@ -27,6 +28,17 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Calificaciones</a>
                             </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link nav-option" href="{{ route('horarios')}}">Crear grupo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-option" href="{{ route('dashboard')}}">Registrar/Dar de baja usuario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Ver estadísticas</a>
+                            </li>
+                            @endif
                         </ul>
                     </div>
                 </nav>

@@ -41,7 +41,7 @@
         <tbody>
         @foreach($usuarios as $usuario)
             <tr>
-                <td>{{ $usuario->nombre }}</td>
+                <td>{{ $usuario->name }}</td>
                 <td><input type="number" name="calificaciones[{{ $usuario->nombre }}]" class="form-control" placeholder="Calificación" required></td>
             </tr>
         @endforeach
