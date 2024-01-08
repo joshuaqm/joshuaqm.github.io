@@ -28,12 +28,22 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Calificaciones</a>
                             </li>
-                            @else
+                            @elseif (auth()->user()->role == '1')
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('nuevo-grupo')}}">Crear grupo</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('crear-usuarios')}}">Ver/Registrar/Dar de baja usuarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Ver estadísticas</a>
+                            </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link nav-option" href="{{ route('nuevo-examen')}}">Registrar nuevo examen</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-option" href="{{ route('modificar-calificaciones')}}">Modificar calificaciones</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Ver estadísticas</a>

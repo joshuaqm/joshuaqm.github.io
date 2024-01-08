@@ -16,7 +16,17 @@
 
 <body>
 @include('layouts.navigation')
-@if (auth()->user()->role == '1')
+@if (auth()->user()->role == '0')
+<br>
+    <div>
+        <style>
+            .autorizacion{
+                padding-left: 4rem;
+            }
+        </style>
+        <h1 class="autorizacion">No tienes autorización para ver esta página</h1>
+    </div>
+@else
 
 <section class='container my-5'>
     <h1>Modificar calificaciones de examen existente</h1>
@@ -93,17 +103,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
-@else
-    <br>
-    <div>
-        <style>
-            .autorizacion{
-                padding-left: 4rem;
-            }
-        </style>
-        <h1 class="autorizacion">No tienes autorización para ver esta página</h1>
-    </div>
-    
+
 @endif
 
 </body>

@@ -99,8 +99,10 @@
                         <strong>Tipo de usuario:</strong>
                         @if ($user->role == '0')
                             <span class="">Alumno</span>
-                        @else
+                        @elseif ($user->role == '1')
                             <span class="">Administrador</span>
+                        @else
+                            <span class="">Profesor</span>
                         @endif
                         </div>
                     <div class="mb-3">
