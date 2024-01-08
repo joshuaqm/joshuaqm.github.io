@@ -32,7 +32,7 @@
                             <div class="text-center">
                                 <h4 class="mt-1 mb-5 pb-1 text-primary">Registrar nuevo usuario</h4>
                             </div>
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('crear-usuarios') }}">
                                         @csrf
                                     <!-- Name -->
                                     <div>
@@ -70,13 +70,24 @@
 
                                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                     </div>
+                                    <div class="mt-4">
+                                        <x-input-label for="role" :value="__('Tipo de usuario:')" />
 
+                                        <select id="role" class="block mt-1 w-full" name="role" required>
+                                            <option value="" selected disabled>Seleccionar tipo de usuario</option>
+                                            <option value="0">Alumno</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Profesor</option>
+                                        </select>
+
+                                        <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                                    </div>
                                     <div class="flex items-center justify-end mt-4 text-center">
                                         <x-primary-button class="btn gradient-custom-2 ms-4">
                                             {{ __('Registro') }}
                                         </x-primary-button>
                                     </div>
-                                    </form>
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -94,7 +105,7 @@
 
             <div>
                 <h4 class="mt-1 mb-5 pb-1 text-primary">Administradores registrados:</h4>
-                
+
             </div>
             <div>
                 <h4 class="mt-1 mb-5 pb-1 text-primary">Profesores registrados:</h4>
