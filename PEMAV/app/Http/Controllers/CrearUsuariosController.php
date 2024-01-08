@@ -18,6 +18,7 @@ class CrearUsuariosController extends Controller
     {
         return view('vistas-administrador.crear-usuarios');
     }
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -41,4 +42,15 @@ class CrearUsuariosController extends Controller
         // Redireccionar a la vista de registro sin redireccionar a ninguna página
         return redirect()->route('crear-usuarios')->with('success', 'Usuario registrado exitosamente.');
     }
+
+    public function verUsuarios()
+    {
+        $alumnos = User::where('role', '0')->get();
+        $administradores = User::where('role', '1')->get();
+        $profesores = User::where('role', '2')->get();
+        
+
+        return view('vistas-administrador.crear-usuarios', compact('administradores', 'profesores', 'alumnos'));
+    }
+
 }

@@ -4,6 +4,10 @@
   font-family: Arial, sans-serif;
 }
 
+body{
+    background-color: #eee;
+}
+
 /* Estilos para los botones */
 .primary-button {
   font-family: Arial, sans-serif; 
@@ -79,4 +83,18 @@
 
 h1{
     color: blue
+}
+
+table {
+    width: 80%; /* Ancho de la tabla */
+    margin: auto; /* Centrar la tabla */
+    border-collapse: collapse; /* Colapsar los bordes de la tabla */
+}
+th, td {
+    padding: 10px; /* Añadir espaciado interno a las celdas */
+    text-align: center; /* Centrar texto dentro de las celdas */
+    border: 1px solid #000; /* Añadir bordes a las celdas */
+}
+th {
+    background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
 }

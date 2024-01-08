@@ -102,20 +102,89 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <!-- Administradores -->
             <div>
                 <h4 class="mt-1 mb-5 pb-1 text-primary">Administradores registrados:</h4>
-
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Fecha de registro</th>
+                            <th>Fecha de ultima modificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($administradores as $administrador)
+                        <tr>
+                            <td>{{ $administrador->id }}</td>
+                            <td>{{ $administrador->name }}</td>
+                            <td>{{ $administrador->email }}</td>
+                            <td>{{ $administrador->created_at }}</td>
+                            <td>{{ $administrador->updated_at }}</td>
+                                                      
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+            <br><hr><br>
+            <!-- Profesores -->
             <div>
                 <h4 class="mt-1 mb-5 pb-1 text-primary">Profesores registrados:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Fecha de registro</th>
+                            <th>Fecha de ultima modificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($profesores as $profesor)
+                        <tr>
+                            <td>{{ $profesor->id }}</td>
+                            <td>{{ $profesor->name }}</td>
+                            <td>{{ $profesor->email }}</td>
+                            <td>{{ $profesor->created_at }}</td>
+                            <td>{{ $profesor->updated_at }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+            <br><hr><br>
+            <!-- Alumnos -->
             <div>
                 <h4 class="mt-1 mb-5 pb-1 text-primary">Alumnos registrados:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Fecha de registro</th>
+                            <th>Fecha de ultima modificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($alumnos as $alumno)
+                        <tr>
+                            <td>{{ $alumno->id }}</td>
+                            <td>{{ $alumno->name }}</td>
+                            <td>{{ $alumno->email }}</td>
+                            <td>{{ $alumno->created_at }}</td>
+                            <td>{{ $alumno->updated_at }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            
 
-            </div>
         </div>
     </section>
     
