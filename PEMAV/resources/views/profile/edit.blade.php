@@ -100,7 +100,7 @@
                         @if ($user->role == '0')
                             <span class="">Alumno</span>
                         @else
-                            <span class="badge bg-danger">Administrador</span>
+                            <span class="">Administrador</span>
                         @endif
                         </div>
                     <div class="mb-3">
