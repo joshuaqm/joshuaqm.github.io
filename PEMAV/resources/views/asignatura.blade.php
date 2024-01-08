@@ -35,55 +35,68 @@
 
     <br> 
 
-    <h3>Calificaciones de examenes:</h3>
-    <div class="text-center mt-4">
-        
-    <style>
-        table {
-            width: 80%; /* Ancho de la tabla */
-            margin: auto; /* Centrar la tabla */
-            border-collapse: collapse; /* Colapsar los bordes de la tabla */
-        }
-        th, td {
-            padding: 10px; /* Añadir espaciado interno a las celdas */
-            text-align: center; /* Centrar texto dentro de las celdas */
-            border: 1px solid #000; /* Añadir bordes a las celdas */
-        }
-        th {
-            background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
-        }
-    </style>
-    <table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Examen 1</th>
-            <th>Examen 2</th>
+    @if (auth()->user()->role == '0')
+        <h3>Calificaciones de examenes:</h3>
+        <div class="text-center mt-4">
+            
+        <style>
+            table {
+                width: 80%; /* Ancho de la tabla */
+                margin: auto; /* Centrar la tabla */
+                border-collapse: collapse; /* Colapsar los bordes de la tabla */
+            }
+            th, td {
+                padding: 10px; /* Añadir espaciado interno a las celdas */
+                text-align: center; /* Centrar texto dentro de las celdas */
+                border: 1px solid #000; /* Añadir bordes a las celdas */
+            }
+            th {
+                background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
+            }
+        </style>
+        <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Examen 1</th>
+                <th>Examen 2</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Grado</td>
-            <td>Grado</td>
-            <td>Grado</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Grado</td>
+                <td>Grado</td>
+                <td>Grado</td>
 
-        </tr>
-        <tr>
-            <td>Tipo</td>
-            <td>Tipo</td>
-            <td>Tipo</td>
+            </tr>
+            <tr>
+                <td>Tipo</td>
+                <td>Tipo</td>
+                <td>Tipo</td>
 
-        </tr>
-        <tr>
-            <td>Calificacion</td>
-            <td>Calificacion</td>
-            <td>Calificacion</td>
+            </tr>
+            <tr>
+                <td>Calificacion</td>
+                <td>Calificacion</td>
+                <td>Calificacion</td>
 
-        </tr>
+            </tr>
 
-    </tbody>
-</table>
+        </tbody>
+        </table>
+    @else
+        <h3>Seleccionar acciones:</h3>
+        <div class="col-lg-auto ml-auto">
+            <br>
+            <a href="{{ route('nuevo-examen') }}" class="btn btn-primary">Subir calificaciones de nuevo examen</a>
+            <br>
+        </div>
+        <div>
+            <br><br><br>
+            <a href="{{ route('modificar-calificaciones') }}" class="btn btn-primary">Modificar calificaciones de examen existente</a>
+        </div>
+    @endif
     </div>
 </section>
 
