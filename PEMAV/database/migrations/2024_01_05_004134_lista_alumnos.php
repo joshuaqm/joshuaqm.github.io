@@ -13,7 +13,7 @@ class ListaAlumnos extends Migration
             $table->bigInteger('id_alumno')->unsigned();
 
             $table->foreign('id_grupo')->references('id_grupo')->on('grupos')->onDelete('cascade');
-            $table->foreign('id_alumno')->references('id_alumno')->on('alumnos')->onDelete('cascade');
+            $table->foreign('id_alumno')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
