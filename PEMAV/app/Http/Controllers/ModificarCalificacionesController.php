@@ -8,7 +8,7 @@ class ModificarCalificacionesController extends Controller
 {
     public function index()
     {
-        return view('modificar-calificaciones');
+        return view('vistas-administrador.modificar-calificaciones');
     }
     
 }

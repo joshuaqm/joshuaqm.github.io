@@ -10,7 +10,7 @@ class NuevoExamenController extends Controller
 {
     public function index()
     {
-        return view('nuevo-examen');
+        return view('vistas-administrador.nuevo-examen');
     }
     public function mostrarVista()
     {
@@ -18,6 +18,6 @@ class NuevoExamenController extends Controller
     $usuarios = User::all(); 
 
     // Pasar los datos a la vista con el nombre correcto de variable
-    return view('nuevo-examen', ['usuarios' => $usuarios]);
+    return view('vistas-administrador.nuevo-examen', ['usuarios' => $usuarios]);
 }
 }
