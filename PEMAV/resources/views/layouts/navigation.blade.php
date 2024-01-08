@@ -30,7 +30,7 @@
                             </li>
                             @else
                             <li class="nav-item">
-                                <a class="nav-link nav-option" href="{{ route('horarios')}}">Crear grupo</a>
+                                <a class="nav-link nav-option" href="{{ route('nuevo-grupo')}}">Crear grupo</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('dashboard')}}">Registrar/Dar de baja usuario</a>
