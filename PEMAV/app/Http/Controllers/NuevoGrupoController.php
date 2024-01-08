@@ -53,7 +53,7 @@ class NuevoGrupoController extends Controller
         $asignaturas = Asignatura::pluck('nombre_asignatura', 'id_asignatura');
 
         // Obtener los ID y nombres de los usuarios con role igual a 1 (suponiendo que son profesores)
-        $profesores = User::where('role', 1)->pluck('name', 'id');
+        $profesores = User::where('role', 2)->pluck('name', 'id');
 
         return view('vistas-administrador.nuevo-grupo', [
             'asignaturas' => $asignaturas,

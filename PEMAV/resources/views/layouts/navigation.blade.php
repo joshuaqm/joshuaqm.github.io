@@ -33,7 +33,7 @@
                                 <a class="nav-link nav-option" href="{{ route('nuevo-grupo')}}">Crear grupo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-option" href="{{ route('dashboard')}}">Registrar/Dar de baja usuario</a>
+                                <a class="nav-link nav-option" href="{{ route('crear-usuarios')}}">Ver/Registrar/Dar de baja usuarios</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Ver estadísticas</a>
