@@ -26,7 +26,7 @@
     <br>
     @if (auth()->user()->role == '1')
     <div class="d-flex justify-content-end">
-        <a href="{{ route('dashboard') }}" class="btn btn-light text-white gradient-custom-2 me-2">Crear/Eliminar anuncio</a>
+        <a href="{{ route('crear-anuncio') }}" class="btn btn-light text-white gradient-custom-2 me-2">Crear/Eliminar anuncio</a>
     </div>
     @endif
     <!-- Carrusel de anuncios -->

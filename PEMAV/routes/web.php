@@ -11,6 +11,7 @@ use App\Http\Controllers\NuevoExamenController;
 use App\Http\Controllers\ModificarCalificacionesController;
 use App\Http\Controllers\NuevoGrupoController;
 use App\Http\Controllers\CrearUsuariosController;
+use App\Http\Controllers\CarrouselController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,11 +86,14 @@ Route::get('/nuevo-grupo', [NuevoGrupoController::class, 'create'])->name('nuevo
 Route::post('/nuevo-grupo', [NuevoGrupoController::class, 'dias'])->name('nuevo-grupo');
 
 //crear-usuarios
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
-//Route::get('/crear-usuarios', [CrearUsuariosController::class, 'index'])->name('crear-usuarios')->middleware('auth');
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'index'])->name('crear-usuarios');
-// Route::post('/crear-usuarios', [CrearUsuariosController::class, 'store'])->name('crear-usuarios-store');
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'verUsuarios'])->name('crear-usuarios');
-// Route::post('/crear-usuarios', [CrearUsuariosController::class, 'eliminarUsuario'])->name('crear-usuarios');
 Route::post('/crear-usuarios/store', [CrearUsuariosController::class, 'store'])->name('crear-usuarios-store');
 Route::post('/crear-usuarios/eliminar', [CrearUsuariosController::class, 'eliminarUsuario'])->name('crear-usuarios-eliminar');
+
+//crear-anuncio
+Route::get('/crear-anuncio', [CarrouselController::class, 'index'])->name('crear-anuncio');
+Route::post('/crear-anuncio', [CarrouselController::class, 'store'])->name('crear-anuncio');
+Route::delete('/crear-anuncio/{id}', [CarrouselController::class, 'destroy'])->name('eliminar-anuncio');
+Route::get('/show-image/{id}', [CarrouselController::class, 'showImage'])->name('show-image');
+
