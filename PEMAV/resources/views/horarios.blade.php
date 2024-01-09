@@ -70,12 +70,13 @@
 
             if (horariosEnEsteMomento.length > 0) {
                 const detalles = horariosEnEsteMomento.map(grupo => {
-                    const horaInicio = grupo.horario_inicio.slice(11, 16);
-                    const horaFin = grupo.horario_fin.slice(11, 16);
+                const horaInicio = grupo.horario_inicio.slice(11, 16);
+                const horaFin = grupo.horario_fin.slice(11, 16);
 
-                    return `${grupo.id_asignatura}:<br>Grupo: ${grupo.id_grupo}<br>Salon: ${grupo.salon}
-                        <br>Inicio: ${horaInicio}<br>Fin: ${horaFin}`;
-                }).join('<br>');
+                return `${grupo.asignatura.nombre_asignatura}:<br>Grupo: ${grupo.id_grupo}<br>Salon: ${grupo.salon}
+                    <br>Inicio: ${horaInicio}<br>Fin: ${horaFin}`;
+            }).join('<br>');
+
 
                 columna.innerHTML = detalles;
             }
