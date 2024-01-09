@@ -90,3 +90,4 @@ Route::post('/nuevo-grupo', [NuevoGrupoController::class, 'dias'])->name('nuevo-
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'index'])->name('crear-usuarios');
 Route::post('/crear-usuarios', [CrearUsuariosController::class, 'store'])->name('crear-usuarios');
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'verUsuarios'])->name('crear-usuarios');
+Route::post('/crear-usuarios', [CrearUsuariosController::class, 'eliminarUsuario'])->name('crear-usuarios');

@@ -43,14 +43,40 @@ class CrearUsuariosController extends Controller
         return redirect()->route('crear-usuarios')->with('success', 'Usuario registrado exitosamente.');
     }
 
-    public function verUsuarios()
+    public function verUsuarios(Request $request)
     {
         $alumnos = User::where('role', '0')->get();
         $administradores = User::where('role', '1')->get();
         $profesores = User::where('role', '2')->get();
-        
 
-        return view('vistas-administrador.crear-usuarios', compact('administradores', 'profesores', 'alumnos'));
+        $role = $request->input('role'); // Obtener el valor del filtro de rol desde la solicitud
+
+        if ($role !== null) {
+            $users = User::where('role', $role)->get(); // Filtrar usuarios por el rol especificado
+        } else {
+            $users = User::all(); // Obtener todos los usuarios si no se proporciona un rol específico
+        }
+
+        return view('vistas-administrador.crear-usuarios', compact('administradores', 'profesores', 'alumnos', 'users'));
+    }
+
+
+
+    public function eliminarUsuario(Request $request)
+    {
+        $request->validate([
+            'user' => ['required', 'exists:users,id'], // Asegura que el usuario exista en la base de datos
+        ]);
+
+        $userId = $request->input('user');
+        $user = User::find($userId);
+
+        if ($user) {
+            $user->delete();
+            return redirect()->route('crear-usuarios')->with('success', 'Usuario eliminado exitosamente.');
+        } else {
+            return redirect()->route('crear-usuarios')->with('error', 'No se pudo encontrar el usuario.');
+        }
     }
 
 }

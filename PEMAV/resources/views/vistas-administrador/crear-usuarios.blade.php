@@ -98,7 +98,31 @@
                             <div class="text-center">
                                 <h4 class="mt-1 mb-5 pb-1 text-primary">Dar de baja usuario</h4>
                             </div>
-                            <!-- Contenido para dar de baja usuario -->
+                            <form action="{{ route('crear-usuarios') }}" method="GET">
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Filtar por rol:</label>
+                                    <select name="role" id="role" class="form-control">
+                                        <option value="" selected disabled>Seleccionar rol</option>
+                                        <option value="0">Alumno</option>
+                                        <option value="2">Profesor</option>
+                                        <option value="1">Administrador</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </form>
+                            <br><br>
+                            <form action="{{ route('crear-usuarios') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="user" class="form-label">Seleccionar usuario a eliminar:</label>
+                                    <select name="user" id="user" class="form-control">
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+                            </form>
                         </div>
                     </div>
                 </div>
