@@ -1,0 +1,118 @@
+/* Nuevo degradado para el header */
+.form-label,
+.form-control {
+  font-family: Arial, sans-serif;
+}
+
+body{
+    background-color: #eee;
+}
+
+/* Estilos para los botones */
+.primary-button {
+  font-family: Arial, sans-serif; 
+}
+.header {
+    /* Fallback para navegadores antiguos */
+    background: #fccb90;
+
+    /* Degradado para navegadores modernos */
+    background: linear-gradient(to right, #27A4F2, #1A2D99);
+}
+.gradient-custom-2 {
+    /* Fallback para navegadores antiguos */
+    background: #fccb90;
+
+    /* Degradado para navegadores modernos */
+    background: linear-gradient(to right, #27A4F2, #1A2D99);
+}
+    
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    }
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+}
+/* En styles.css */
+.logo-header {
+    width: 70px; /* Ajusta el ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+    padding-top: 10px; /* Espaciado superior de 20px */
+    padding-bottom: 10px;
+}
+
+.header-text {
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}	    
+
+.login-logo {
+    width: 300px; /* Ajusta el ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+    padding-top: 5px; /* Espaciado superior de 20px */
+    padding-bottom: 5px;
+}	
+
+.nav-option{
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 2rem;
+}
+
+.color-hover:hover{
+    color: #8787fb;
+    cursor: pointer;
+}
+
+.subject-attributes{
+    color: #000;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 1.5rem;
+}
+
+h1{
+    color: blue
+}
+
+table {
+    width: 80%; /* Ancho de la tabla */
+    margin: auto; /* Centrar la tabla */
+    border-collapse: collapse; /* Colapsar los bordes de la tabla */
+}
+th, td {
+    padding: 10px; /* Añadir espaciado interno a las celdas */
+    text-align: center; /* Centrar texto dentro de las celdas */
+    border: 1px solid #000; /* Añadir bordes a las celdas */
+}
+th {
+    background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
+}
+
+#carouselRecipes {
+    max-width: 800px; /* Cambia el valor según el ancho máximo deseado */
+    margin: auto; /* Para centrar el carrusel */
+}
+
+#carouselRecipes .carousel-item img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Cambia el valor según la altura máxima deseada */
+    object-fit: cover; /* Para ajustar la imagen sin deformarla */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+    color: white; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+}
