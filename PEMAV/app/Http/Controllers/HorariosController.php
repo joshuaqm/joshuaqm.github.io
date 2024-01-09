@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\ListaAlumnos;
+use App\Models\Grupo;
 
 class HorariosController extends Controller
 {
     public function index()
     {
-        // Obtener los horarios de clase del usuario autenticado
-        $user = Auth::user();
-        //$horarios = $user->horarios; // Asumiendo que los horarios están definidos en una relación en el modelo User
-        //return view('horarios', ['horarios' => $horarios]);
-        //return view('horarios', compact('horarios'));
+        // Obtener el ID del usuario autenticado
+        $userId = Auth::id();
+
+        // Buscar en la tabla ListaAlumnos donde el ID de alumno coincida con el ID del usuario autenticado
+        $lista_alumnos = ListaAlumnos::where('id_alumno', $userId)->get();
+
+        $grupos = Grupo::whereIn('id_grupo', $lista_alumnos->pluck('id_grupo'))->get();
         
-        return view('horarios');
+        // Pasar los datos a la vista
+        return view('horarios', compact('lista_alumnos', 'grupos'));
     }
+
 }
