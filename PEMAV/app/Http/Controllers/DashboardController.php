@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Carousel;
+use App\Models\Asignatura;
 
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class DashboardController extends Controller
     public function index()
     {
         $imagenes = Carousel::all();
-        return view('dashboard', compact('imagenes'));
+        $asignaturas = Asignatura::all();
+        return view('dashboard', compact('imagenes', 'asignaturas'));
     }
 
     public function showImage($id)

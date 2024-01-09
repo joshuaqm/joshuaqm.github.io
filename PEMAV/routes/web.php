@@ -64,9 +64,7 @@ Route::get('/calificaciones', [CalificacionesController::class, 'index'])->name(
 
 //asignatura
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
-//Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura')->middleware('auth');
-Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura');
-//Route::get('/asignatura/{nombre}', 'AsignaturaController@showAsignatura')->name('asignatura');
+Route::get('/asignatura/{id_asignatura}', [AsignaturaController::class, 'index'])->name('asignatura');
 
 //asignatura-profesor
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos

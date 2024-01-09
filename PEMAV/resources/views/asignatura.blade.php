@@ -16,44 +16,74 @@
 
 <body>
 @include('layouts.navigation')
-<section class='container my-5'>
-    <h1 class="mb-4">Asignatura: Asignatura n</h1>
+<section class="container my-5">
+    <h1 class="mb-4">Asignatura: {{$asignatura}}</h1>
 
-    <div class="col-md-6 subject-attributes">
-        <p>Profesor: Nombre del Profesor</p>
-    </div>
-    <div class="col-md-6 subject-attributes">
-            <p>Grupo: Nombre del Grupo</p>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Profesor</h5>
+                    <p class="card-text">{{$profesor}}</p>
+                </div>
+            </div>
         </div>
 
-    <div class="col-md-6 subject-attributes">
-        <p>Salón: Número del Salón</p>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Grupo</h5>
+                    <p class="card-text">{{$idGrupo}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Salón</h5>
+                    <p class="card-text">{{$salon}}</p>
+                </div>
+            </div>
+        </div>
+        
+    </div><br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Días de clase:</h5>
+                    <p class="card-text">{{$dias}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Hora de inicio</h5>
+                    <p class="card-text">{{$horario_inicio}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Hora de fin</h5>
+                    <p class="card-text">{{$horario_fin}}</p>
+                </div>
+            </div>
+        </div>
+        
     </div>
-    <div class="col-md-6 subject-attributes">
-        <p>Calificación: Valor de la Calificación</p>
-    </div>
+
 
     <br> 
 
     @if (auth()->user()->role == '0')
         <h3>Calificaciones de examenes:</h3>
         <div class="text-center mt-4">
-            
-        <style>
-            table {
-                width: 80%; /* Ancho de la tabla */
-                margin: auto; /* Centrar la tabla */
-                border-collapse: collapse; /* Colapsar los bordes de la tabla */
-            }
-            th, td {
-                padding: 10px; /* Añadir espaciado interno a las celdas */
-                text-align: center; /* Centrar texto dentro de las celdas */
-                border: 1px solid #000; /* Añadir bordes a las celdas */
-            }
-            th {
-                background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
-            }
-        </style>
         <table>
         <thead>
             <tr>

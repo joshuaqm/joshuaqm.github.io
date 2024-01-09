@@ -20,6 +20,11 @@
 </head>
 <body>
     @include('layouts.navigation')
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }} 
+        </div>
+    @endif
 <section class="container my-5">
     <br><br>
     <h2>Anuncios:</h2>
@@ -68,62 +73,63 @@
         <h2>Asignaturas</h2>
         <br><br>
         <div class="row text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+            <a href="{{ route('asignatura', ['id_asignatura' => 1]) }}">
+                <img src="./images/imagen.jpg" alt="Imagen 1" class="img-fluid">
+                <p style="padding-top: 20px;">Español</p>
+            </a>
+        </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 1" class="img-fluid">
-                    <p style="padding-top: 20px;">Español</p>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 2]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Matemáticas</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 3]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 3" class="img-fluid">
                     <p style="padding-top: 20px;">Habilidad Matemática</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 4]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Habilidad Verbal</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 5]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Física</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 6]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Química</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 7]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Biología</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 8]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Historia</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 9]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Geografía</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-                <a href="{{ route('asignatura') }}">
+                <a href="{{ route('asignatura', ['id_asignatura' => 10]) }}">
                     <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
                     <p style="padding-top: 20px;">Formación Cívica y Ética</p>
                 </a>
