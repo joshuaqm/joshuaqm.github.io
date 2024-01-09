@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Redirect;
 
 class CrearUsuariosController extends Controller
 {
@@ -40,7 +41,7 @@ class CrearUsuariosController extends Controller
         // Auth::login($user);
 
         // Redireccionar a la vista de registro sin redireccionar a ninguna página
-        return redirect()->route('crear-usuarios')->with('success', 'Usuario registrado exitosamente.');
+        return redirect()->route('crear-usuarios')->with('success', 'Usuario creado exitosamente');
     }
 
     public function verUsuarios(Request $request)
@@ -78,5 +79,6 @@ class CrearUsuariosController extends Controller
             return redirect()->route('crear-usuarios')->with('error', 'No se pudo encontrar el usuario.');
         }
     }
+
 
 }

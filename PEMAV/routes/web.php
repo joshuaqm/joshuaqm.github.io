@@ -88,6 +88,8 @@ Route::post('/nuevo-grupo', [NuevoGrupoController::class, 'dias'])->name('nuevo-
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
 //Route::get('/crear-usuarios', [CrearUsuariosController::class, 'index'])->name('crear-usuarios')->middleware('auth');
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'index'])->name('crear-usuarios');
-Route::post('/crear-usuarios', [CrearUsuariosController::class, 'store'])->name('crear-usuarios');
+// Route::post('/crear-usuarios', [CrearUsuariosController::class, 'store'])->name('crear-usuarios-store');
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'verUsuarios'])->name('crear-usuarios');
-Route::post('/crear-usuarios', [CrearUsuariosController::class, 'eliminarUsuario'])->name('crear-usuarios');
+// Route::post('/crear-usuarios', [CrearUsuariosController::class, 'eliminarUsuario'])->name('crear-usuarios');
+Route::post('/crear-usuarios/store', [CrearUsuariosController::class, 'store'])->name('crear-usuarios-store');
+Route::post('/crear-usuarios/eliminar', [CrearUsuariosController::class, 'eliminarUsuario'])->name('crear-usuarios-eliminar');

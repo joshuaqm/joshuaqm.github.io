@@ -32,7 +32,7 @@
                             <div class="text-center">
                                 <h4 class="mt-1 mb-5 pb-1 text-primary">Registrar nuevo usuario</h4>
                             </div>
-                            <form method="POST" action="{{ route('crear-usuarios') }}">
+                            <form method="POST" action="{{ route('crear-usuarios-store') }}">
                                         @csrf
                                     <!-- Name -->
                                     <div>
@@ -111,7 +111,7 @@
                                 <button type="submit" class="btn btn-primary">Filtrar</button>
                             </form>
                             <br><br>
-                            <form action="{{ route('crear-usuarios') }}" method="POST">
+                            <form action="{{ route('crear-usuarios-eliminar') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="user" class="form-label">Seleccionar usuario a eliminar:</label>
