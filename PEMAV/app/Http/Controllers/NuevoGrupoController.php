@@ -100,4 +100,12 @@ class NuevoGrupoController extends Controller
         return redirect()->route('nuevo-grupo')
             ->with('success', 'Grupo creado exitosamente.');
     }
+    public function destroy($id)
+    {
+        $grupo = Grupo::findOrFail($id);
+        $grupo->delete();
+
+        return redirect()->route('nuevo-grupo')
+            ->with('success', 'Grupo eliminado exitosamente.');
+    }
 }

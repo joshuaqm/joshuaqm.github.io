@@ -91,6 +91,7 @@ Route::get('/nuevo-grupo', [NuevoGrupoController::class, 'index'])->name('nuevo-
 Route::post('/nuevo-grupo', [NuevoGrupoController::class, 'store'])->name('nuevo-grupo');
 Route::get('/nuevo-grupo', [NuevoGrupoController::class, 'create'])->name('nuevo-grupo');
 Route::post('/nuevo-grupo', [NuevoGrupoController::class, 'dias'])->name('nuevo-grupo');
+Route::post('/nuevo-grupo/{id_grupo}', [NuevoGrupoController::class, 'destroy'])->name('eliminar-grupo');
 
 //crear-usuarios
 Route::get('/crear-usuarios', [CrearUsuariosController::class, 'index'])->name('crear-usuarios');
@@ -104,7 +105,7 @@ Route::post('/crear-anuncio', [CarrouselController::class, 'store'])->name('crea
 Route::delete('/crear-anuncio/{id}', [CarrouselController::class, 'destroy'])->name('eliminar-anuncio');
 Route::get('/show-image/{id}', [CarrouselController::class, 'showImage'])->name('show-image');
 
-//agrergar-alumnos
+//agregar-alumnos
 Route::get('/agregar-alumnos/{id_grupo}', [AgregarAlumnosController::class, 'verDetalles'])->name('ver-detalles');
 Route::post('/agregar-alumnos/{id_grupo}/agregar-alumno/{id_alumno}', [AgregarAlumnosController::class, 'agregarAlumno'])->name('agregar-alumno');
 Route::post('/agregar-alumnos/{id_grupo}/eliminar-alumno/{id_alumno}', [AgregarAlumnosController::class, 'eliminarAlumno'])->name('eliminar-alumno');

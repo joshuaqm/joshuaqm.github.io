@@ -84,6 +84,8 @@
                 <label for="viernes">Viernes</label><br>
                 <input type="checkbox" id="sabado" name="dias[]" value="sabado">
                 <label for="sabado">Sábado</label><br>
+                <input type="checkbox" id="domingo" name="dias[]" value="domingo">
+                <label for="domingo">Domingo</label><br>
             </div>
             <button type="submit" class="btn btn-primary">Crear Grupo</button>
         </form>
@@ -103,6 +105,7 @@
                     <th scope="col">Horario de Fin</th>
                     <th scope="col">Días</th>
                     <th scope="col">Modificar lista de alumnos</th>
+                    <th scope="col">Eliminar grupo</th>
                 </tr>
             </thead>
             <tbody>
@@ -119,6 +122,25 @@
                     <td>
                         <a href="{{ route('ver-detalles', ['id_grupo' => $grupo->id_grupo]) }}" class="btn btn-primary">Modificar alumnos</a>
                     </td>
+                    <td>
+                        <form id="eliminarForm{{ $grupo->id_grupo }}" action="{{ route('eliminar-grupo', ['id_grupo' => $grupo->id_grupo]) }}" method="POST">
+                            @csrf
+                            <button type="button" onclick="confirmarEliminar('{{ $grupo->id_grupo }}')" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+
+                    <script>
+                        function confirmarEliminar(idGrupo) {
+                            if (confirm('¿Estás seguro de que deseas eliminar este grupo? Esta acción no se puede deshacer.')) {
+                                // Si el usuario confirma, enviar el formulario
+                                document.getElementById('eliminarForm' + idGrupo).submit();
+                            } else {
+                                // Si el usuario cancela, no hacer nada
+                                return false;
+                            }
+                        }
+                    </script>
+
                 </tr>
             @endforeach
 
@@ -127,14 +149,6 @@
         </table>
     </div>
 </section><br>
-<section>
-    <div class="container">
-        <h1 class="mb-4">Eliminar grupo</h1>
-
-
-    </div>
-</section>
-
 
 
 
