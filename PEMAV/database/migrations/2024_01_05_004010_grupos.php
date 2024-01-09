@@ -16,12 +16,8 @@ class Grupos extends Migration
             $table->time('horario_fin');
             $table->json('dias_seleccionados')->nullable();
 
-            // Elimina la columna 'lista_alumnos' de esta tabla
-            // No se debe hacer referencia a 'lista_alumnos' aquí
-
             $table->foreign('id_asignatura')->references('id_asignatura')->on('asignatura')->onDelete('cascade');
             $table->foreign('id_profesor')->references('id')->on('users')->onDelete('cascade');
-            // No se debe hacer referencia a 'lista_alumnos' aquí
         });
     }
 

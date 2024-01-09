@@ -10,11 +10,12 @@ class ListaAlumnos extends Model
     use HasFactory;
     protected $table = 'lista_alumnos';
 
+    public $timestamps = false;
+
     protected $fillable =[
         'id_lista_alumnos',
         'id_grupo',
         'id_alumno',
-    ]
+    ];
 
-    public $timestamps = false;
 }

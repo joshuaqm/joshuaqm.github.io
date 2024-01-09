@@ -19,33 +19,33 @@ class NuevoGrupoController extends Controller
 
     // Almacenar un nuevo grupo en la base de datos
     public function store(Request $request)
-{
-    // Validar los datos ingresados por el usuario
-    $request->validate([
-        'id_grupo' => 'required|unique:grupos',
-        'id_asignatura' => 'required|exists:asignaturas,id_asignatura',
-        'id_profesor' => 'required|exists:users,id',
-        'salon' => 'required',
-        'horario_inicio' => 'required|date_format:H:i',
-        'horario_fin' => 'required|date_format:H:i|after:horario_inicio',
-        'dias' => 'required|array', // Asegura que sea un arreglo
-    ]);
+    {
+        // Validar los datos ingresados por el usuario
+        $request->validate([
+            'id_grupo' => 'required|unique:grupos',
+            'id_asignatura' => 'required|exists:asignaturas,id_asignatura',
+            'id_profesor' => 'required|exists:users,id',
+            'salon' => 'required',
+            'horario_inicio' => 'required|date_format:H:i',
+            'horario_fin' => 'required|date_format:H:i|after:horario_inicio',
+            'dias' => 'required|array', // Asegura que sea un arreglo
+        ]);
 
-    // Crear un nuevo grupo en la base de datos
-    Grupo::create([
-        'id_grupo' => $request->id_grupo,
-        'id_asignatura' => $request->id_asignatura,
-        'id_profesor' => $request->id_profesor,
-        'salon' => $request->salon,
-        'horario_inicio' => $request->horario_inicio,
-        'horario_fin' => $request->horario_fin,
-        'dias_seleccionados' => json_encode($request->dias), // Guarda los días como una cadena JSON
-    ]);
+        // Crear un nuevo grupo en la base de datos
+        Grupo::create([
+            'id_grupo' => $request->id_grupo,
+            'id_asignatura' => $request->id_asignatura,
+            'id_profesor' => $request->id_profesor,
+            'salon' => $request->salon,
+            'horario_inicio' => $request->horario_inicio,
+            'horario_fin' => $request->horario_fin,
+            'dias_seleccionados' => json_encode($request->dias), // Guarda los días como una cadena JSON
+        ]);
 
-    // Redireccionar después de guardar el grupo
-    return redirect()->route('vistas-administrador.nuevo-grupo')
-        ->with('success', 'Grupo creado exitosamente.');
-}
+        // Redireccionar después de guardar el grupo
+        return redirect()->route('vistas-administrador.nuevo-grupo')
+            ->with('success', 'Grupo creado exitosamente.');
+    }
 
     public function create()
     {
@@ -55,10 +55,23 @@ class NuevoGrupoController extends Controller
 
         $alumnos = User::where('role', 0)->pluck('name', 'id');
 
+        $grupos = Grupo::all();
+        //$id_asignatura = $request->input('id_asignatura'); // Obtener el valor del filtro de asignatura desde la solicitud
+        //$id_profesor = $request->input('id_profesor'); // Obtener el valor del filtro de profesor desde la solicitud
+
+        // if ($id_asignatura !== null) {
+        //     $grupos = Grupo::where('id_asignatura', $id_asignatura)->get(); // Filtrar grupos por la asignatura especificada
+        // } else if ($id_profesor !== null) {
+        //     $grupos = Grupo::where('id_profesor', $id_profesor)->get(); // Filtrar grupos por el profesor especificado
+        // } else {
+        //     $grupos = Grupo::all(); // Obtener todos los grupos si no se proporciona una asignatura o profesor específico
+        // }
+
         return view('vistas-administrador.nuevo-grupo', [
             'asignaturas' => $asignaturas,
             'profesores' => $profesores,
             'alumnos' => $alumnos,
+            'grupos' => $grupos,
         ]);
     }
 
@@ -87,6 +100,4 @@ class NuevoGrupoController extends Controller
         return redirect()->route('nuevo-grupo')
             ->with('success', 'Grupo creado exitosamente.');
     }
-
-
 }
