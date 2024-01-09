@@ -49,15 +49,16 @@ class NuevoGrupoController extends Controller
 
     public function create()
     {
-        // Obtener los ID y nombres de las asignaturas
         $asignaturas = Asignatura::pluck('nombre_asignatura', 'id_asignatura');
 
-        // Obtener los ID y nombres de los usuarios con role igual a 1 (suponiendo que son profesores)
         $profesores = User::where('role', 2)->pluck('name', 'id');
+
+        $alumnos = User::where('role', 0)->pluck('name', 'id');
 
         return view('vistas-administrador.nuevo-grupo', [
             'asignaturas' => $asignaturas,
             'profesores' => $profesores,
+            'alumnos' => $alumnos,
         ]);
     }
 

@@ -86,6 +86,16 @@
                 <label for="sabado">Sábado</label><br>
             </div>
 
+            <div class="mb-3">
+                <label for="lista_alumnos" class="form-label">Seleccione la lista de alumnos:</label>
+                    <select name="lista_alumnos" id="lista_alumnos" class="form-control" required>
+                        <option value="">Seleccionar alumno</option>
+                        @foreach ($alumnos as $id_alumno => $id)
+                            <option value="{{ $id_alumno }}">{{ $id }}</option>
+                        @endforeach
+                    </select>
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Crear Grupo</button>
         </form>
