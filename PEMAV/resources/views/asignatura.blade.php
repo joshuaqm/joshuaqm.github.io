@@ -18,7 +18,6 @@
 @include('layouts.navigation')
 <section class="container my-5">
     <h1 class="mb-4">Asignatura: {{$asignatura}}</h1>
-
     <div class="row">
         <div class="col-md-4">
             <div class="card">
@@ -31,18 +30,33 @@
 
         <div class="col-md-4">
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Grupo</h5>
-                    <p class="card-text">{{$idGrupo}}</p>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Seleccionar grupo: </h5>
+                    <form action="{{ route('ver_grupo') }}" method="GET" id="grupoForm" class="mb-3">
+                        <select name="grupo_id" id="grupo_id" class="form-control">
+                            @foreach ($grupos as $grupo)
+                                <option value="{{ $grupo->id_grupo }}">Grupo: {{ $grupo->id_grupo }}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" form="grupoForm" class="btn btn-primary">Filtrar</button>
+                    </div>
                 </div>
             </div>
         </div>
 
+
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    @if (auth()->user()->role == '0')
                     <h5 class="card-title">Salón</h5>
                     <p class="card-text">{{$salon}}</p>
+                    @elseif (auth()->user()->role == '2')
+                    <h5 class="card-title">Salón</h5>
+                    <p class="card-text">{{$salon}}</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -52,8 +66,14 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    @if (auth()->user()->role == '0')
                     <h5 class="card-title">Días de clase:</h5>
                     <p class="card-text">{{$dias}}</p>
+                    @elseif (auth()->user()->role == '2')
+                    <h5 class="card-title">Días de clase:</h5>
+                    <p class="card-text">{{$dias}}</p>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -61,8 +81,13 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    @if (auth()->user()->role == '0')
                     <h5 class="card-title">Hora de inicio</h5>
                     <p class="card-text">{{$horario_inicio}}</p>
+                    @elseif (auth()->user()->role == '2')
+                    <h5 class="card-title">Hora de inicio</h5>
+                    <p class="card-text">{{$horario_inicio}}</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -70,8 +95,13 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    @if (auth()->user()->role == '0')
                     <h5 class="card-title">Hora de fin</h5>
                     <p class="card-text">{{$horario_fin}}</p>
+                    @elseif (auth()->user()->role == '2')
+                    <h5 class="card-title">Hora de fin</h5>
+                    <p class="card-text">{{$horario_fin}}</p>
+                    @endif
                 </div>
             </div>
         </div>

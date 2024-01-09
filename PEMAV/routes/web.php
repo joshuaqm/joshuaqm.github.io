@@ -70,6 +70,7 @@ Route::get('/asignatura/{id_asignatura}', [AsignaturaController::class, 'index']
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
 //Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'])->name('asignatura-profesor')->middleware('auth');
 Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'])->name('asignatura-profesor');
+Route::get('/ver-grupo', [AsignaturaController::class, 'verGrupo'])->name('ver_grupo');
 
 //nuevo-examen
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
