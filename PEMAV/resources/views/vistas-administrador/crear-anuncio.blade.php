@@ -34,7 +34,7 @@
                 <p>Ingresa una breve descripción:</p>
                 <input type="text" name="description" placeholder="Descripción" class="form-control mb-2" required>
                 <p>Selecciona una imagen:</p>
-                <input type ="file" id="image" name="image"  class="form-control mb-2" required>
+                <input type="file" id="image" name="image" class="form-control mb-2" accept="image/jpeg, image/png" required>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Crear Anuncio</button>

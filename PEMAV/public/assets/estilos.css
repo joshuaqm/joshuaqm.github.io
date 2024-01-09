@@ -98,3 +98,21 @@ th, td {
 th {
     background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
 }
+
+#carouselRecipes {
+    max-width: 800px; /* Cambia el valor según el ancho máximo deseado */
+    margin: auto; /* Para centrar el carrusel */
+}
+
+#carouselRecipes .carousel-item img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Cambia el valor según la altura máxima deseada */
+    object-fit: cover; /* Para ajustar la imagen sin deformarla */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+    color: white; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+}

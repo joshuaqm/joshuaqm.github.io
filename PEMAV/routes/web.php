@@ -12,6 +12,7 @@ use App\Http\Controllers\ModificarCalificacionesController;
 use App\Http\Controllers\NuevoGrupoController;
 use App\Http\Controllers\CrearUsuariosController;
 use App\Http\Controllers\CarrouselController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::get('/show-image/{id}', [DashboardController::class, 'showImage'])->name('show-image');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

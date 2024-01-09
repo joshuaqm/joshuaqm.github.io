@@ -29,19 +29,24 @@
         <a href="{{ route('crear-anuncio') }}" class="btn btn-light text-white gradient-custom-2 me-2">Crear/Eliminar anuncio</a>
     </div>
     @endif
+    
     <!-- Carrusel de anuncios -->
     <div id="carouselRecipes" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-bs-target="#carouselRecipes" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#carouselRecipes" data-bs-slide-to="1"></li>
+            @foreach($imagenes as $key => $imagen)
+                <li data-bs-target="#carouselRecipes" data-bs-slide-to="{{ $key }}" @if($key === 0) class="active" @endif></li>
+            @endforeach
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./images/imagen.jpg" class="d-block w-50 mx-auto" alt="Receta 1">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/imagen.jpg" class="d-block w-50 mx-auto" alt="Receta 2">
-            </div>
+            @foreach($imagenes as $key => $imagen)
+                <div class="carousel-item @if($key === 0) active @endif">
+                    <img src="{{ route('show-image', $imagen->id) }}" alt="Imagen" class="d-block w-100">
+                    <div class="carousel-caption d-none d-md-block text-center">
+                        <h5>{{ $imagen->title }}</h5>
+                        <p>{{ $imagen->description }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
         <a class="carousel-control-prev" href="#carouselRecipes" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -52,6 +57,9 @@
             <span class="visually-hidden">Siguiente</span>
         </a>
     </div>
+
+
+
 </section>
 <br><hr><br>
 
