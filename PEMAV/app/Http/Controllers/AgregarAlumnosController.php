@@ -1,33 +1,53 @@
-    <?php
+<?php
+namespace App\Http\Controllers;
 
-    namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Models\Grupo;
+use App\Models\User;
+use App\Models\ListaAlumnos;
 
-    use Illuminate\Http\Request;
-    use App\Models\Grupo;
-    use App\Models\User;
-
-    class AgregarAlumnosController extends Controller
+class AgregarAlumnosController extends Controller
+{
+    public function verDetalles($id_grupo)
     {
-        public function index()
-        {        
-            return view('vistas-administrador.agregar-alumnos', ['alumnos' => $alumnos]);
+        $alumnos = User::where('role', 0)->get();
+        $grupo = Grupo::with('asignatura', 'profesor')->find($id_grupo);
+        $alumnosEnGrupo = $grupo->alumnos()->get();
+
+        $total_alumnos = $alumnos->count();
+
+        return view('vistas-administrador.agregar-alumnos', [
+            'grupo' => $grupo,
+            'alumnos' => $alumnos,
+            'alumnosEnGrupo' => $alumnosEnGrupo,
+            'total_alumnos' => $total_alumnos
+        ]);
+    }
+
+    public function agregarAlumno($id_grupo, $id_alumno)
+    {
+        $grupo = Grupo::find($id_grupo);
+        $alumno = User::find($id_alumno);
+
+        // Verificar si el alumno ya está en el grupo
+        if ($grupo->alumnos->contains($alumno)) {
+            return redirect()->route('ver-detalles', ['id_grupo' => $id_grupo])
+                ->with('error', 'El alumno ya está en el grupo.');
         }
 
-        public function verDetalles($id_grupo)
-        {
-            $alumnos = User::where('role', 0)->get();
-            $total_alumnos = $alumnos->count();
+        // Agregar el alumno al grupo
+        $grupo->alumnos()->attach($alumno);
 
-            // Obtener los detalles completos del grupo usando el ID recibido
-            $grupo = Grupo::with('asignatura', 'profesor')->find($id_grupo);
-
-            // Pasar los detalles del grupo y otras variables a la vista 'agregar-alumnos'
-            return view('vistas-administrador.agregar-alumnos', [
-                'grupo' => $grupo,
-                'alumnos' => $alumnos,
-                'total_alumnos' => $total_alumnos
-            ]);
+        return redirect()->route('ver-detalles', ['id_grupo' => $id_grupo])
+            ->with('success', 'Alumno agregado al grupo correctamente');
     }
 
+    public function eliminarAlumno(Request $request, $id_grupo, $id_alumno)
+    {
+        $grupo = Grupo::find($id_grupo);
+        $grupo->alumnos()->detach($id_alumno); // Eliminar el alumno del grupo
 
+        return redirect()->route('ver-detalles', ['id_grupo' => $id_grupo])
+            ->with('success', 'Alumno eliminado del grupo correctamente');
     }
+}

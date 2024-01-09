@@ -117,7 +117,7 @@
                     <td>{{ $grupo->horario_fin->format('H:i') }}</td>
                     <td>{{ $grupo->dias_seleccionados }}</td>
                     <td>
-                        <a href="{{ route('agregar-alumnos', ['id_grupo' => $grupo->id_grupo]) }}" class="btn btn-primary">Modificar alumnos</a>
+                        <a href="{{ route('ver-detalles', ['id_grupo' => $grupo->id_grupo]) }}" class="btn btn-primary">Modificar alumnos</a>
                     </td>
                 </tr>
             @endforeach

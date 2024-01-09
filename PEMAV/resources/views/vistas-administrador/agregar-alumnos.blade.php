@@ -42,6 +42,7 @@
     <h1 class="mb-4">Alumnos inscritos en el grupo: </h1>
     <div class="mt-4">
         <p>Aquí se muestran los alumnos inscritos en el grupo número {{ $grupo->id_grupo }}</p>
+        <p>Actualmente hay {{ $alumnosEnGrupo->count() }} alumno(s) inscritos en el grupo</p>
         <table class="table">
             <thead>
                 <tr>
@@ -51,18 +52,18 @@
                 </tr>
             </thead>
             <tbody>
-                    <!-- Foreach -->
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <form action="" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Eliminar del Grupo</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <!-- End Foreach -->    
+            @foreach($alumnosEnGrupo as $alumno)
+                <tr>
+                    <td>{{ $alumno->name }}</td>
+                    <td>{{ $alumno->email}}</td>
+                    <td>
+                        <form action="{{ route('eliminar-alumno', ['id_grupo' => $grupo->id_grupo, 'id_alumno' => $alumno->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Eliminar del Grupo</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach 
             </tbody>
         </table>
     </div>
@@ -81,18 +82,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($alumnos as $alumno)
-                    <tr>
-                        <td>{{ $alumno->name }}</td>
-                        <td>{{ $alumno->email}}</td>
-                        <td>
-                            <form action="" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Agregar al Grupo</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+            <!-- Sección de agregar alumnos al grupo -->
+            @foreach($alumnos as $alumno)
+                <tr>
+                    <td>{{ $alumno->name }}</td>
+                    <td>{{ $alumno->email}}</td>
+                    <td>
+                        <form action="{{ route('agregar-alumno', ['id_grupo' => $grupo->id_grupo, 'id_alumno' => $alumno->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Agregar al Grupo</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+
             </tbody>
         </table>
     </div>

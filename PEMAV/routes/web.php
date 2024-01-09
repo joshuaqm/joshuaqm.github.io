@@ -105,7 +105,6 @@ Route::delete('/crear-anuncio/{id}', [CarrouselController::class, 'destroy'])->n
 Route::get('/show-image/{id}', [CarrouselController::class, 'showImage'])->name('show-image');
 
 //agrergar-alumnos
-Route::get('/agregar-alumnos', [AgregarAlumnosController::class, 'index'])->name('agregar-alumnos');
-Route::get('/agregar-alumnos/{id_grupo}', [AgregarAlumnosController::class, 'verDetalles'])->name('agregar-alumnos');
-
-
+Route::get('/agregar-alumnos/{id_grupo}', [AgregarAlumnosController::class, 'verDetalles'])->name('ver-detalles');
+Route::post('/agregar-alumnos/{id_grupo}/agregar-alumno/{id_alumno}', [AgregarAlumnosController::class, 'agregarAlumno'])->name('agregar-alumno');
+Route::post('/agregar-alumnos/{id_grupo}/eliminar-alumno/{id_alumno}', [AgregarAlumnosController::class, 'eliminarAlumno'])->name('eliminar-alumno');
