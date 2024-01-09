@@ -85,20 +85,53 @@
                 <input type="checkbox" id="sabado" name="dias[]" value="sabado">
                 <label for="sabado">Sábado</label><br>
             </div>
-
-            <div class="mb-3">
-                <label for="lista_alumnos" class="form-label">Seleccione la lista de alumnos:</label>
-                    <select name="lista_alumnos" id="lista_alumnos" class="form-control" required>
-                        <option value="">Seleccionar alumno</option>
-                        @foreach ($alumnos as $id_alumno => $id)
-                            <option value="{{ $id_alumno }}">{{ $id }}</option>
-                        @endforeach
-                    </select>
-            </div>
-
-
             <button type="submit" class="btn btn-primary">Crear Grupo</button>
         </form>
+    </div>
+</section>
+<section class="container-my-5">
+    <div class="container">
+        <h1 class="mb-4">Grupos creados</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID Grupo</th>
+                    <th scope="col">Asignatura</th>
+                    <th scope="col">Profesor</th>
+                    <th scope="col">Salón</th>
+                    <th scope="col">Horario de Inicio</th>
+                    <th scope="col">Horario de Fin</th>
+                    <th scope="col">Días</th>
+                    <th scope="col">Modificar lista de alumnos</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            @foreach ($grupos as $grupo)
+                <tr>
+                    <th scope="row">{{ $grupo->id_grupo }}</th>
+                    <td>{{ $grupo->asignatura->nombre_asignatura }}</td>
+                    <td>{{ $grupo->profesor->name }}</td>
+                    <td>{{ $grupo->salon }}</td>
+                    <td>{{ $grupo->horario_inicio->format('H:i') }}</td>
+                    <td>{{ $grupo->horario_fin->format('H:i') }}</td>
+                    <td>{{ $grupo->dias_seleccionados }}</td>
+                    <td>
+                        <a href="{{ route('agregar-alumnos', ['id_grupo' => $grupo->id_grupo]) }}" class="btn btn-primary">Modificar alumnos</a>
+                    </td>
+                </tr>
+            @endforeach
+
+
+            </tbody>
+        </table>
+    </div>
+</section><br>
+<section>
+    <div class="container">
+        <h1 class="mb-4">Eliminar grupo</h1>
+
+
     </div>
 </section>
 

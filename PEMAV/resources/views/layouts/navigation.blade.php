@@ -30,7 +30,7 @@
                             </li>
                             @elseif (auth()->user()->role == '1')
                             <li class="nav-item">
-                                <a class="nav-link nav-option" href="{{ route('nuevo-grupo')}}">Crear grupo</a>
+                                <a class="nav-link nav-option" href="{{ route('nuevo-grupo')}}">Crear/Eliminar grupos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('crear-usuarios')}}">Ver/Registrar/Dar de baja usuarios</a>

@@ -13,6 +13,7 @@ use App\Http\Controllers\NuevoGrupoController;
 use App\Http\Controllers\CrearUsuariosController;
 use App\Http\Controllers\CarrouselController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AgregarAlumnosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,4 +103,9 @@ Route::get('/crear-anuncio', [CarrouselController::class, 'index'])->name('crear
 Route::post('/crear-anuncio', [CarrouselController::class, 'store'])->name('crear-anuncio');
 Route::delete('/crear-anuncio/{id}', [CarrouselController::class, 'destroy'])->name('eliminar-anuncio');
 Route::get('/show-image/{id}', [CarrouselController::class, 'showImage'])->name('show-image');
+
+//agrergar-alumnos
+Route::get('/agregar-alumnos', [AgregarAlumnosController::class, 'index'])->name('agregar-alumnos');
+Route::get('/agregar-alumnos/{id_grupo}', [AgregarAlumnosController::class, 'verDetalles'])->name('agregar-alumnos');
+
 
