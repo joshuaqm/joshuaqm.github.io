@@ -62,13 +62,18 @@ class AsignaturaController extends Controller
         
                 return view('asignatura', compact('asignatura', 'asignaturas', 'grupos', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
             }
-        
             return redirect()->back();
     }
     public function verGrupo(Request $request)
     {
+        $userID = Auth::id();
         $grupoID = $request->input('grupo_id');
         $grupo = Grupo::find($grupoID);
+        $asignaturaID = $grupo->id_asignatura;
+
+        $grupos = Grupo::where('id_profesor', $userID)
+                    ->where('id_asignatura', $asignaturaID)
+                    ->get();
         
         if ($grupo) {
             $asignatura = $grupo->asignatura->nombre_asignatura;
@@ -78,11 +83,9 @@ class AsignaturaController extends Controller
             $horario_inicio = Carbon::parse($grupo->horario_inicio)->format('H:i');
             $horario_fin = Carbon::parse($grupo->horario_fin)->format('H:i');
 
-            return view('asignatura', compact('asignatura', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
+            return view('asignatura', compact('grupos', 'asignatura', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
         }
 
-        return redirect()->back();
-    }
-
-            
+        return view('asignatura', compact('grupos'));
+    }        
 }

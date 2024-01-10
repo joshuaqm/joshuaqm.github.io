@@ -31,20 +31,28 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body d-flex flex-column">
+                    @if (auth()->user()->role == '0')
+                    <h5 class="card-title">Grupo</h5>
+                    <p class="card-text">{{$idGrupo}}</p>
+                    @elseif (auth()->user()->role == '2')
                     <h5 class="card-title">Seleccionar grupo: </h5>
                     <form action="{{ route('ver_grupo') }}" method="GET" id="grupoForm" class="mb-3">
                         <select name="grupo_id" id="grupo_id" class="form-control">
                             @foreach ($grupos as $grupo)
-                                <option value="{{ $grupo->id_grupo }}">Grupo: {{ $grupo->id_grupo }}</option>
+                                <option value="{{ $grupo->id_grupo }}" @if(request('grupo_id') == $grupo->id_grupo) selected @endif>
+                                    Grupo: {{ $grupo->id_grupo }}
+                                </option>
                             @endforeach
                         </select>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" form="grupoForm" class="btn btn-primary">Filtrar</button>
+                        </div>
                     </form>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" form="grupoForm" class="btn btn-primary">Filtrar</button>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
+
 
 
         <div class="col-md-4">
