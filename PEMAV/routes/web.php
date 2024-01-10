@@ -73,10 +73,8 @@ Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'
 Route::get('/ver-grupo', [AsignaturaController::class, 'verGrupo'])->name('ver_grupo');
 
 //nuevo-examen
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
-//Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen')->middleware('auth');
 Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen');
-Route::get('/nuevo-examen', [NuevoExamenController::class, 'mostrarVista'])->name('nuevo-examen');
+Route::get('/nuevo-examen', [NuevoExamenController::class, 'filtrarGrupos'])->name('nuevo-examen');
 
 //modificar-calificaciones
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos

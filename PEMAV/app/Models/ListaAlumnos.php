@@ -22,4 +22,8 @@ class ListaAlumnos extends Model
     {
         return $this->belongsTo(Grupo::class, 'id_grupo');
     }
+    public function alumno()
+    {
+        return $this->belongsTo(User::class, 'id_alumno');
+    }
 }

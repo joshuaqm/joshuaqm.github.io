@@ -28,38 +28,46 @@
     </div>
 @else
 <section class='container my-5'>
-    <h1 class="mb-4">Subir calificaciones de nuevo examen</h1>
+    <h2 class="mb-4">Subir calificaciones de nuevo examen</h2>
     <br>
-    <form action="{{ route('nuevo-examen') }}" method="POST">
-        @csrf
-        <div class="col-md-6 exam-attributes">
-            <p>Ingresa el tipo de examen:</p>
-            <input type="text" name="tipo_examen" placeholder="Tipo de examen" class="form-control mb-2" required>
-            <p>Ingresa el grado de examen:</p>
-            <input type="text" name="grado_examen" placeholder="Grado de examen" class="form-control mb-2" required>
-        </div>
-
-    
-    <br>
+    <div>
+        <form action="{{ route('nuevo-examen') }}" method="GET">
+            <div class="form-group">
+                <label for="id_grupo"><h4>Filtrar grupos:</h4></label>
+                <select class="form-control" name="id_grupo" id="id_grupo">
+                    @foreach ($grupos as $grupo)
+                        <option value="{{ $grupo->id_grupo }}" @if(request('id_grupo') == $grupo->id_grupo) selected @endif>
+                            {{ $grupo->asignatura->nombre_asignatura }}: Grupo {{ $grupo->id_grupo }}
+                        </option>
+                    @endforeach
+                </select>
+            </div><br>
+            <button class="btn btn-primary" type="submit">Filtrar</button>
+        </form>
+    </div>    
+</section>
+<section class='container my-5'>
     <p>Ingresa las calificaciones de cada alumno:</p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre del Alumno</th>
-                <th>Calificación</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($usuarios as $usuario)
-            <tr>
-                <td>{{ $usuario->name }}</td>
-                <td><input type="number" name="calificaciones[{{ $usuario->nombre }}]" class="form-control" placeholder="Calificación" required></td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-    <button type="submit" class="btn btn-primary">Registrar examen</button>
-    </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre del Alumno</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($lista_alumnos as $alumno)
+                <tr>
+                    <td>{{ $alumno->alumno->name }}</td>
+                    <td><input type="number" name="calificaciones[{{ $alumno->alumno->name }}]" class="form-control" placeholder="Calificación" required></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <form action="">
+            <button type="submit" class="btn btn-primary">Registrar examen</button>
+        </form>
 </section>
 
 
