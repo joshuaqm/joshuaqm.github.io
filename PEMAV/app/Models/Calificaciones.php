@@ -11,6 +11,7 @@ class Calificaciones extends Model
     protected $fillable = [
         'id_examen',
         'id_asignatura',
+        'id_grupo',
         'id_alumno',
         'numero_examen',
         'fecha_examen',

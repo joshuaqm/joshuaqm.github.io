@@ -9,10 +9,12 @@ class AddNumeroExamenToCalificaciones extends Migration
     {
         Schema::table('calificaciones', function (Blueprint $table) {
             $table->unsignedBigInteger('id_asignatura')->after('id_examen');
-            $table->unsignedBigInteger('id_alumno')->after('id_asignatura');
+            $table->unsignedBigInteger('id_grupo')->after('id_asignatura');
+            $table->unsignedBigInteger('id_alumno')->after('id_grupo');
             $table->integer('numero_examen')->after('id_alumno')->nullable();
 
             $table->foreign('id_asignatura')->references('id_asignatura')->on('asignatura');
+            $table->foreign('id_grupo')->references('id_grupo')->on('grupos');
             $table->foreign('id_alumno')->references('id')->on('users');
         });
     }
