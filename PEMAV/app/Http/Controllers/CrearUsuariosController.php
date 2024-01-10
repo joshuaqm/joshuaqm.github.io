@@ -69,15 +69,23 @@ class CrearUsuariosController extends Controller
             'user' => ['required', 'exists:users,id'], // Asegura que el usuario exista en la base de datos
         ]);
 
+        $usuarioActual = Auth::user();
         $userId = $request->input('user');
         $user = User::find($userId);
 
-        if ($user) {
-            $user->delete();
-            return redirect()->route('crear-usuarios')->with('success', 'Usuario eliminado exitosamente.');
-        } else {
-            return redirect()->route('crear-usuarios')->with('error', 'No se pudo encontrar el usuario.');
+        // No permitir que el usuario elimine su propia cuenta
+        if ($usuarioActual->id === $user->id) {
+            return redirect()->route('crear-usuarios')->with('error', 'No puedes eliminar tu propia cuenta.');
         }
+        else{
+            if ($user) {
+                $user->delete();
+                return redirect()->route('crear-usuarios')->with('success', 'Usuario eliminado exitosamente.');
+            } else {
+                return redirect()->route('crear-usuarios')->with('error', 'No se pudo encontrar el usuario.');
+            }
+        }
+        
     }
 
 

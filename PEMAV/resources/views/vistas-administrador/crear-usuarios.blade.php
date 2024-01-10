@@ -23,6 +23,11 @@
         {{ session('success') }}
     </div>
 @endif
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
     <section class="h-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5">
             <div class="row justify-content-center align-items-start"> <!-- Alinieación de elementos arriba -->
