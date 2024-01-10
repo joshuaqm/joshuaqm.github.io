@@ -59,8 +59,14 @@ class AsignaturaController extends Controller
                 $dias = null;
                 $horario_inicio = null;
                 $horario_fin = null;
-        
-                return view('asignatura', compact('asignatura', 'asignaturas', 'grupos', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
+                
+                if($grupos->count() > 0){
+                    return view('asignatura', compact('asignatura', 'asignaturas', 'grupos', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
+                }
+                else{
+                    session()->flash('error', 'No hay grupos disponibles para esta asignatura.');
+                    return redirect()->back();
+                }
             }
             return redirect()->back();
     }
