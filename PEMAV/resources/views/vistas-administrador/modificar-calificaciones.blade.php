@@ -54,104 +54,47 @@
     </section>
 
     <section class='container my-5'>
-    <script>
-        $(document).ready(function() {
-            // Escucha los cambios en los campos de entrada con la clase "calificacionInput"
-            $('.calificacionInput').on('input', function() {
-                var alumnoId = $(this).data('alumno-id');
-                var examenNumero = $(this).data('examen-numero');
-                var calificacion = $(this).val();
-
-                // Realiza una solicitud AJAX para guardar la calificación
-                $.ajax({
-                    method: 'POST',
-                    url: '{{ route('modificar-calificaciones.post') }}',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        alumno_id: alumnoId,
-                        examen_numero: examenNumero,
-                        calificacion: calificacion
-                    },
-                    success: function(response) {
-                        console.log('Calificación guardada exitosamente');
-                        // Puedes agregar aquí alguna lógica para actualizar la interfaz si es necesario
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error al guardar la calificación:', error);
-                    }
-                });
-            });
-        });
-    </script>
         <div>
-            <p>Modifica las calificaciones deseadas:</p>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Alumno</th>
-                            @php
-                                $examenes = [];
-                            @endphp
-                            @foreach($calificaciones as $calificacion)
-                                @php
-                                    $examenes[$calificacion->numero_examen] = true;
-                                @endphp
-                            @endforeach
-                            @foreach($examenes as $numero_examen => $value)
-                                <th>Examen: {{$numero_examen}}</th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                    <tbody>
+        <p>Modifica las calificaciones deseadas:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre del Alumno</th>
                         @php
-                            $alumnos = collect();
+                            $examenes = collect($calificaciones)->unique('numero_examen');
                         @endphp
-                        @foreach($calificaciones as $calificacion)
-                            @php
-                                $alumno = $calificacion->alumno;
-                                if(!$alumnos->contains('id', $alumno->id)){
-                                    $alumnos->push($alumno);
-                                }
-                            @endphp
+                        @foreach($examenes as $calificacion)
+                            <th>Examen: {{ $calificacion['numero_examen'] }}</th>
                         @endforeach
-                        @foreach($alumnos as $alumno)
-                            <tr>
-                                <td>{{ $alumno->name }}</td>
-                                @foreach($examenes as $numero_examen => $value)
-                                    <td>
-                                        @php
-                                            $calificacionEncontrada = null;
-                                            foreach ($calificaciones as $calificacion) {
-                                                if($calificacion->id_alumno === $alumno->id && $calificacion->numero_examen === $numero_examen) {
-                                                    $calificacionEncontrada = $calificacion;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                        @if($calificacionEncontrada)
-                                            <form method="POST" action="{{ route('modificar-calificaciones.post', ['id' => $calificacionEncontrada->id]) }}">
-                                                @csrf
-                                                @method('PATCH')
-                                                <input type="number" name="calificacion" value="{{ $calificacionEncontrada->calificacion }}">
-                                            </form>
-                                        @endif
-                                    </td>
-                                @endforeach
-                            </tr>
+                    </tr>
+            </thead>
+
+            <tbody>
+                @foreach(collect($calificaciones)->groupBy('id_alumno') as $alumnoId => $calificacionesAlumno)
+                    <tr>
+                        <td>{{ $calificacionesAlumno->first()->alumno->name }}</td>
+                        @foreach($calificacionesAlumno as $exam)
+                            <td>
+                                <form method="POST" action="{{ route('modificar-calificaciones.update', ['id' => $exam->id]) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="number" name="calificacion" value="{{ $exam->calificacion }}" step="0.01" min="0" max="10">
+                                    <input type="hidden" name="alumno_id" value="{{ $exam->id_alumno }}">
+                                    <input type="hidden" name="examen_numero" value="{{ $exam->numero_examen }}">
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </form>
+                            </td>
                         @endforeach
-                    </tbody>
+                    </tr>
+                @endforeach
+            </tbody>
+
             </table>
-        </div>
-        <div class="d-flex justify-content-end">
-            <form method="POST" action="{{ route('modificar-calificaciones.post') }}">
-                @csrf
-                <input type="hidden" name="alumno_id" value="{{ $alumnoId }}">
-                <input type="hidden" name="examen_numero" value="{{ $examenNumero }}">
-                <input type="hidden" class="calificacionInput" data-alumno-id="{{ $alumnoId }}" data-examen-numero="{{ $examenNumero }}" name="calificacion" value="{{ $calificacion }}">
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            </form>
+
+
         </div>
     </section>
+
 
 
 

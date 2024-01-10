@@ -43,7 +43,7 @@ class ModificarCalificacionesController extends Controller
     }
 
 
-    public function modificarCalificaciones(Request $request)
+    public function update(Request $request)
     {
         // Validación de los datos recibidos en la solicitud
         $validator = Validator::make($request->all(), [
@@ -62,12 +62,11 @@ class ModificarCalificacionesController extends Controller
         $examenNumero = $request->input('examen_numero');
         $calificacion = $request->input('calificacion');
 
-        // Buscar la calificación existente para el alumno y el examen
+        // Actualizar la calificación del alumno para el examen específico
         $calificacionExistente = Calificaciones::where('id_alumno', $alumnoId)
             ->where('numero_examen', $examenNumero)
             ->first();
 
-        // Si se encuentra la calificación existente, actualizarla; de lo contrario, crear una nueva
         if ($calificacionExistente) {
             $calificacionExistente->calificacion = $calificacion;
             $calificacionExistente->save();

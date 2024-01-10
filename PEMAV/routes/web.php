@@ -81,7 +81,7 @@ Route::post('/nuevo-examen/store', [NuevoExamenController::class, 'store'])->nam
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
 Route::get('/modificar-calificaciones', [ModificarCalificacionesController::class, 'index'])->name('modificar-calificaciones');
 Route::get('/filtrar-grupos', [ModificarCalificacionesController::class, 'filtrarGrupos'])->name('filtrar-grupos');
-Route::post('/modificar-calificaciones', [ModificarCalificacionesController::class, 'modificarCalificaciones'])->name('modificar-calificaciones.post');
+Route::patch('/modificar-calificaciones', [ModificarCalificacionesController::class, 'update'])->name('modificar-calificaciones.update'); 
 
 
 //nuevo-grupo

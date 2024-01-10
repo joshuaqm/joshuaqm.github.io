@@ -8,6 +8,8 @@ class Calificaciones extends Model
     protected $table = 'calificaciones';
     public $timestamps = false;
 
+    protected $primaryKey = 'id_examen';
+
     protected $fillable = [
         'id_examen',
         'id_asignatura',
