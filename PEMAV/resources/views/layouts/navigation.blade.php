@@ -23,9 +23,6 @@
                                 <a class="nav-link nav-option" href="{{ route('horarios')}}">Horarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-option" href="{{ route('dashboard')}}">Asistencias</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Calificaciones</a>
                             </li>
                             @elseif (auth()->user() && (auth()->user()->role == '1' || auth()->user()->role == null))

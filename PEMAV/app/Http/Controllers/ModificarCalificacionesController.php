@@ -6,6 +6,7 @@ use App\Models\Asignatura;
 use App\Models\ListaAlumnos;
 use App\Models\Calificaciones;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
@@ -15,11 +16,13 @@ class ModificarCalificacionesController extends Controller
     {
         $profesor = Auth::user()->id;
         $grupos = Grupo::where('id_profesor', $profesor)->get();
-        $lista_alumnos = []; // Inicializa la variable lista_alumnos
-        $id_asignatura = null;
-        $calificaciones = [];
-        $alumnos = [];
-        return view('vistas-administrador.modificar-calificaciones', compact('grupos', 'lista_alumnos', 'id_asignatura', 'calificaciones', 'alumnos'));
+        $calificaciones=[];
+        
+        $alumnoId = null;
+        $examenNumero = null;
+        $calificacion = null;
+
+        return view('vistas-administrador.modificar-calificaciones', compact('grupos','calificaciones', 'alumnoId', 'examenNumero', 'calificacion'));
     }
 
 
@@ -27,30 +30,16 @@ class ModificarCalificacionesController extends Controller
     {
         $grupoID = $request->input('id_grupo');
         $id_asignatura = Grupo::where('id_grupo', $grupoID)->first()->id_asignatura;
-        $lista_alumnos = ListaAlumnos::where('id_grupo', $grupoID)->get();
 
-        $calificaciones = Calificaciones::select('numero_examen')
-            ->where('id_grupo', $grupoID)
-            ->where('id_asignatura', $id_asignatura)
-            ->distinct()
-            ->pluck('numero_examen')
-            ->toArray();
-
-        // Obtener las calificaciones de los alumnos para mostrar en la tabla
-        $calificacionesAlumnos = [];
-        foreach ($alumnos as $alumno) {
-            $calificacionesAlumno = Calificaciones::where('id_alumno', $alumno->id)
-                ->where('id_grupo', $grupoID)
-                ->where('id_asignatura', $id_asignatura)
-                ->pluck('calificacion', 'numero_examen')
-                ->toArray();
-
-            $calificacionesAlumnos[$alumno->id] = $calificacionesAlumno;
-        }
         $profesor = Auth::user()->id;
         $grupos = Grupo::where('id_profesor', $profesor)->get();
+        $calificaciones=Calificaciones::where('id_grupo', $grupoID)->get();
 
-        return view('vistas-administrador.modificar-calificaciones', compact('grupos', 'lista_alumnos', 'id_asignatura', 'calificaciones'));
+        $alumnoId = null;
+        $examenNumero = null;
+        $calificacion = null;
+
+        return view('vistas-administrador.modificar-calificaciones', compact('grupos', 'id_asignatura', 'grupoID','calificaciones', 'alumnoId', 'examenNumero', 'calificacion'));
     }
 
 
@@ -73,16 +62,16 @@ class ModificarCalificacionesController extends Controller
         $examenNumero = $request->input('examen_numero');
         $calificacion = $request->input('calificacion');
 
-        // Actualizar la calificación del alumno para el examen específico
+        // Buscar la calificación existente para el alumno y el examen
         $calificacionExistente = Calificaciones::where('id_alumno', $alumnoId)
             ->where('numero_examen', $examenNumero)
             ->first();
 
+        // Si se encuentra la calificación existente, actualizarla; de lo contrario, crear una nueva
         if ($calificacionExistente) {
             $calificacionExistente->calificacion = $calificacion;
             $calificacionExistente->save();
         } else {
-            // Si no existe una calificación para el alumno y el examen, crea una nueva
             Calificaciones::create([
                 'id_alumno' => $alumnoId,
                 'numero_examen' => $examenNumero,
@@ -94,4 +83,5 @@ class ModificarCalificacionesController extends Controller
         // Redireccionar a la página anterior o a donde sea necesario
         return redirect()->back()->with('success', 'Calificación modificada exitosamente');
     }
+
 }
