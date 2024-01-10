@@ -46,6 +46,39 @@
             <button class="btn btn-primary" type="submit">Filtrar</button>
         </form>
     </div>
+</section>
+<section class='container my-5'>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Alumno</th>
+                @foreach ($calificaciones as $examen)
+                    <th>Examen {{ $examen }}</th>
+                @endforeach
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($alumnos as $alumno)
+                <tr>
+                    <td>{{ $alumno->nombre }}</td>
+                    @foreach ($calificaciones as $examen)
+                        <td>
+                            <form action="{{ route('modificar-calificaciones.guardar') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="alumno_id" value="{{ $alumno->id }}">
+                                <input type="hidden" name="examen_numero" value="{{ $examen }}">
+                                <input type="number" name="calificacion" value="{{ $calificacionesAlumnos[$alumno->id][$examen] ?? '' }}">
+                                <button type="submit">Guardar</button>
+                            </form>
+                        </td>
+                    @endforeach
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
 </section>
 

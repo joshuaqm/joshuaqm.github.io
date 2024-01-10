@@ -16,8 +16,9 @@ class NuevoExamenController extends Controller
         $grupos = Grupo::where('id_profesor', $profesor)->get();
         $lista_alumnos = []; // Inicializa la variable lista_alumnos
         $id_asignatura = null;
+        $grupoID = null;
 
-        return view('vistas-administrador.nuevo-examen', compact('grupos', 'lista_alumnos', 'id_asignatura'));
+        return view('vistas-administrador.nuevo-examen', compact('grupos', 'lista_alumnos', 'id_asignatura', 'grupoID'));
     }
 
 
@@ -30,7 +31,7 @@ class NuevoExamenController extends Controller
         $profesor = Auth::user()->id;
         $grupos = Grupo::where('id_profesor', $profesor)->get();
 
-        return view('vistas-administrador.nuevo-examen', compact('grupos', 'lista_alumnos', 'id_asignatura'));
+        return view('vistas-administrador.nuevo-examen', compact('grupos', 'lista_alumnos', 'id_asignatura', 'grupoID'));
     }
 
     public function store(Request $request)
@@ -40,11 +41,13 @@ class NuevoExamenController extends Controller
         $numeroExamen = $request->input('numero_examen');
         $fechaExamen = $request->input('fecha_examen');
         $calificaciones = $request->input('calificaciones');
+        $grupoID = $request->input('grupoID');
 
         // Ejemplo de cómo puedes recorrer las calificaciones y guardarlas
         foreach ($calificaciones as $alumnoId => $calificacion) {
             $nuevaCalificacion = new Calificaciones();
             $nuevaCalificacion->id_asignatura = $id_asignatura; // Asignas el id de la asignatura
+            $nuevaCalificacion->id_grupo = $grupoID; // Asignas el id del grupo
             $nuevaCalificacion->id_alumno = $alumnoId; // Asignas el id del alumno
             $nuevaCalificacion->numero_examen = $numeroExamen; // Asignas el número de examen
             $nuevaCalificacion->fecha_examen = $fechaExamen; // Asignas la fecha del examen

@@ -54,6 +54,7 @@
 <section class='container my-5'>
     <form action="{{ route('nuevo-examen.store') }}" method="POST">
         @csrf
+        <input type="hidden" name="grupoID" value="{{ $grupoID }}">
         <input type="hidden" name="id_asignatura" value="{{ $id_asignatura }}">
         <div class="form-group">
             <label for="numero_examen">Número de examen:</label>
