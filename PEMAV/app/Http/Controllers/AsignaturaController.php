@@ -64,7 +64,7 @@ class AsignaturaController extends Controller
                     return view('asignatura', compact('asignatura', 'asignaturas', 'grupos', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
                 }
                 else{
-                    session()->flash('error', 'No hay grupos disponibles para esta asignatura.');
+                    session()->flash('error', 'No tienes grupos registrados para esta asignatura.');
                     return redirect()->back();
                 }
             }
