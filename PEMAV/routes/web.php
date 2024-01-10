@@ -74,7 +74,8 @@ Route::get('/ver-grupo', [AsignaturaController::class, 'verGrupo'])->name('ver_g
 
 //nuevo-examen
 Route::get('/nuevo-examen', [NuevoExamenController::class, 'index'])->name('nuevo-examen');
-Route::get('/nuevo-examen', [NuevoExamenController::class, 'filtrarGrupos'])->name('nuevo-examen');
+Route::get('/nuevo-examen/filtrar', [NuevoExamenController::class, 'filtrarGrupos'])->name('nuevo-examen.filtrar');
+Route::post('/nuevo-examen/store', [NuevoExamenController::class, 'store'])->name('nuevo-examen.store');
 
 //modificar-calificaciones
 //Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos

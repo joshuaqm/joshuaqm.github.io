@@ -16,6 +16,11 @@
 
 <body>
 @include('layouts.navigation')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 @if (auth()->user()->role == '0')
 <br>
     <div>
@@ -31,7 +36,7 @@
     <h2 class="mb-4">Subir calificaciones de nuevo examen</h2>
     <br>
     <div>
-        <form action="{{ route('nuevo-examen') }}" method="GET">
+        <form action="{{ route('nuevo-examen.filtrar') }}" method="GET">
             <div class="form-group">
                 <label for="id_grupo"><h4>Filtrar grupos:</h4></label>
                 <select class="form-control" name="id_grupo" id="id_grupo">
@@ -47,9 +52,22 @@
     </div>    
 </section>
 <section class='container my-5'>
-    <p>Ingresa las calificaciones de cada alumno:</p>
+    <form action="{{ route('nuevo-examen.store') }}" method="POST">
+        @csrf
+        <input type="hidden" name="id_asignatura" value="{{ $id_asignatura }}">
+        <div class="form-group">
+            <label for="numero_examen">Número de examen:</label>
+            <input type="text" name="numero_examen" class="form-control" required>
+        </div>
 
+        <div class="form-group">
+            <label for="fecha_examen">Fecha de examen:</label>
+            <input type="date" name="fecha_examen" class="form-control" required>
+        </div>
+
+        <p>Ingresa las calificaciones de cada alumno:</p>
         <table class="table">
+            <!-- Encabezados de la tabla -->
             <thead>
                 <tr>
                     <th>Nombre del Alumno</th>
@@ -57,20 +75,20 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($lista_alumnos as $alumno)
+                @if(isset($lista_alumnos))
+                @foreach($lista_alumnos as $alumno)
                 <tr>
                     <td>{{ $alumno->alumno->name }}</td>
-                    <td><input type="number" name="calificaciones[{{ $alumno->alumno->name }}]" class="form-control" placeholder="Calificación" required></td>
+                    <td><input type="number" name="calificaciones[{{ $alumno->alumno->id }}]" class="form-control" placeholder="Calificación" step="0.01" min="0" max="10" required></td>
                 </tr>
-            @endforeach
+
+                @endforeach
+                @endif
             </tbody>
         </table>
-        <form action="">
-            <button type="submit" class="btn btn-primary">Registrar examen</button>
-        </form>
+        <button type="submit" class="btn btn-primary">Registrar examen</button>
+    </form>
 </section>
-
-
 
 
   <!-- Bootstrap JavaScript Libraries -->
