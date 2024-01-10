@@ -16,7 +16,7 @@
 
 <body>
 @include('layouts.navigation')
-@if (auth()->user()->role == '0')
+@if (auth()->user() && auth()->user()->role == '0')
 <br>
     <div>
         <style>

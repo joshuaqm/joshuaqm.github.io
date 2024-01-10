@@ -16,13 +16,23 @@
 
 <body>
 @include('layouts.navigation')
-@if (auth()->user()->role == '1')
-
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
+@if(isset(auth()->user()) && auth()->user()->role != '1')
+
+<br>
+    <div>
+        <style>
+            .autorizacion{
+                padding-left: 4rem;
+            }
+        </style>
+        <h1 class="autorizacion">No tienes autorización para ver esta página</h1>
+    </div>
+@else
     <section class="h-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5">
             <div class="row justify-content-center align-items-start"> <!-- Alinieación de elementos arriba -->
@@ -224,17 +234,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 
-@else
-    <br>
-    <div>
-        <style>
-            .autorizacion{
-                padding-left: 4rem;
-            }
-        </style>
-        <h1 class="autorizacion">No tienes autorización para ver esta página</h1>
-    </div>
-    
+
 @endif
 </body>
 
