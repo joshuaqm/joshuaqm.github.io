@@ -155,10 +155,7 @@
                 <!-- Enlaces a redes sociales y correo -->
                 <a href="https://www.facebook.com/CURSOSPEMAVOFICIAL/?locale=es_LA" target="_blank" class="me-3 color-hover nav-option"><i class="fab fa-facebook icon-footer1"></i>  Facebook</a>
                 <a href="https://www.instagram.com/cursos_pemav_oficial/" target="_blank" class="me-3 color-hover nav-option"><i class="fab fa-instagram icon-footer1"></i>  Instagram</a>
-                <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="me-3 color-hover nav-option"><i class="fa-brands fa-whatsapp"></i>  WhatsApp</a>
-                <a href="mailto:correo@dominio.com" class="color-hover nav-option">
-                    <i class="fa-regular fa-envelope" style="display: inline;"></i> correo@dominio.com
-                </a>
+                <a href="https://wa.me/5534773856" target="_blank" class="me-3 color-hover nav-option"><i class="fa-brands fa-whatsapp"></i>  WhatsApp</a>
             </div>
         </div>
     </div>

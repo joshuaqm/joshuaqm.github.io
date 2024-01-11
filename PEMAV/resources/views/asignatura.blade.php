@@ -117,42 +117,32 @@
     </div>
 
 
-    <br> 
+    <br><br><br>
 
     @if (auth()->user()->role == '0')
+
         <h3>Calificaciones de examenes:</h3>
-        <div class="text-center mt-4">
-        <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Examen 1</th>
-                <th>Examen 2</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Grado</td>
-                <td>Grado</td>
-                <td>Grado</td>
-
-            </tr>
-            <tr>
-                <td>Tipo</td>
-                <td>Tipo</td>
-                <td>Tipo</td>
-
-            </tr>
-            <tr>
-                <td>Calificacion</td>
-                <td>Calificacion</td>
-                <td>Calificacion</td>
-
-            </tr>
-
-        </tbody>
-        </table>
+            <div class="text-center mt-4">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        @foreach($calificaciones->where('id_asignatura', $asignaturaID) as $calificacion)
+                        <th>Examen: {{ $calificacion->numero_examen }}</th>
+                        @endforeach
+                        <th>Promedio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>{{ $alumno }}</td>
+                    @foreach($calificaciones->where('id_asignatura', $asignaturaID) as $calificacion)
+                        <td>{{ $calificacion->calificacion }}</td>
+                    @endforeach
+                    <td>{{ $promedioAsignatura }}</td>
+                    </tr>
+                </tbody>
+            </table>
     @else
         <h3>Seleccionar acciones:</h3>
         <div class="col-lg-auto ml-auto">
@@ -163,10 +153,32 @@
         <div>
             <br><br><br>
             <a href="{{ route('modificar-calificaciones') }}" class="btn btn-primary">Modificar calificaciones de examen existente</a>
+        </div><br><br>
+        <h2>Lista de alumnos:</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Alumno</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($lista_alumnos as $alumno)
+                    <tr>
+                        <td>{{ $alumno->id_alumno }}</td>
+                        <td>{{ $alumno->alumno->name }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
         </div>
     @endif
     </div>
 </section>
+
+    
 
 
 

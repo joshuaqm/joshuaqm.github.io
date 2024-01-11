@@ -8,6 +8,7 @@ use App\Models\Asignatura;
 use App\Models\User;
 use App\Models\Grupo;
 use Carbon\Carbon;
+use App\Models\Calificaciones;
 
 class AsignaturaController extends Controller
 {
@@ -27,7 +28,15 @@ class AsignaturaController extends Controller
             ->with('grupo.profesor') // Cargar la relación del profesor
             ->first();
 
-        
+            $calificaciones = Calificaciones::where('id_alumno', $userID)
+                ->where('id_asignatura', $asignaturaID)
+                ->get();
+
+            $alumno = Auth::user()->name;
+            $promedioAsignatura = Calificaciones::where('id_alumno', $userID)
+                ->where('id_asignatura', $asignaturaID)
+                ->avg('calificacion');
+                    
             if ($grupoAsignatura) {
                 $profesor = $grupoAsignatura->grupo->profesor->name;
                 $salon = $grupoAsignatura->grupo->salon;
@@ -35,7 +44,9 @@ class AsignaturaController extends Controller
                 $dias = $grupoAsignatura->grupo->dias_seleccionados;
                 $horario_inicio = Carbon::parse($grupoAsignatura->grupo->horario_inicio)->format('H:i');
                 $horario_fin = Carbon::parse($grupoAsignatura->grupo->horario_fin)->format('H:i');
-                return view('asignatura', compact('asignatura', 'profesor', 'salon', 'idGrupo', 'dias', 'horario_inicio', 'horario_fin'));
+
+                return view('asignatura', compact('asignatura', 'asignaturaID', 'profesor', 'salon', 'idGrupo', 
+                'dias', 'horario_inicio', 'horario_fin', 'calificaciones', 'alumno', 'promedioAsignatura'));
             }
 
             // Si no se encuentra el grupo, configurar un mensaje de error en la sesión
@@ -59,9 +70,11 @@ class AsignaturaController extends Controller
                 $dias = null;
                 $horario_inicio = null;
                 $horario_fin = null;
+                $lista_alumnos = [];
                 
                 if($grupos->count() > 0){
-                    return view('asignatura', compact('asignatura', 'asignaturas', 'grupos', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
+                    return view('asignatura', compact('asignatura', 'asignaturas', 'grupos', 
+                    'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin', 'lista_alumnos'));
                 }
                 else{
                     session()->flash('error', 'No tienes grupos registrados para esta asignatura.');
@@ -76,6 +89,7 @@ class AsignaturaController extends Controller
         $grupoID = $request->input('grupo_id');
         $grupo = Grupo::find($grupoID);
         $asignaturaID = $grupo->id_asignatura;
+        $lista_alumnos = ListaAlumnos::where('id_grupo', $grupoID)->get();
 
         $grupos = Grupo::where('id_profesor', $userID)
                     ->where('id_asignatura', $asignaturaID)
@@ -89,7 +103,8 @@ class AsignaturaController extends Controller
             $horario_inicio = Carbon::parse($grupo->horario_inicio)->format('H:i');
             $horario_fin = Carbon::parse($grupo->horario_fin)->format('H:i');
 
-            return view('asignatura', compact('grupos', 'asignatura', 'profesor', 'salon', 'dias', 'horario_inicio', 'horario_fin'));
+            return view('asignatura', compact('grupos', 'asignatura', 'profesor', 'salon', 
+            'dias', 'horario_inicio', 'horario_fin', 'lista_alumnos'));
         }
 
         return view('asignatura', compact('grupos'));

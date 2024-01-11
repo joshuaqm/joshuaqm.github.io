@@ -50,25 +50,18 @@ require __DIR__.'/auth.php';
 
 
 //horarios
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a los horarios cuando este la conexion con la base de datos
-//Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios')->middleware('auth');
 Route::get('/horarios', [HorariosController::class, 'index'])->name('horarios');
 
 //calendario
 Route::get('/calendario', [CalendarioController::class, 'index'])->name('calendario');
 
 //calificaciones
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las calificaciones cuando este la conexion con la base de datos
-//Route::get('/calificaciones', [CalificacionesController::class, 'index'])->name('calificaciones')->middleware('auth');
 Route::get('/calificaciones', [CalificacionesController::class, 'index'])->name('calificaciones');
 
 //asignatura
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
 Route::get('/asignatura/{id_asignatura}', [AsignaturaController::class, 'index'])->name('asignatura');
 
 //asignatura-profesor
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
-//Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'])->name('asignatura-profesor')->middleware('auth');
 Route::get('/asignatura-profesor', [AsignaturaProfesorController::class, 'index'])->name('asignatura-profesor');
 Route::get('/ver-grupo', [AsignaturaController::class, 'verGrupo'])->name('ver_grupo');
 
@@ -78,15 +71,12 @@ Route::get('/nuevo-examen/filtrar', [NuevoExamenController::class, 'filtrarGrupo
 Route::post('/nuevo-examen/store', [NuevoExamenController::class, 'store'])->name('nuevo-examen.store');
 
 //modificar-calificaciones
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
 Route::get('/modificar-calificaciones', [ModificarCalificacionesController::class, 'index'])->name('modificar-calificaciones');
 Route::get('/filtrar-grupos', [ModificarCalificacionesController::class, 'filtrarGrupos'])->name('filtrar-grupos');
 Route::patch('/modificar-calificaciones', [ModificarCalificacionesController::class, 'update'])->name('modificar-calificaciones.update'); 
 
 
 //nuevo-grupo
-//Descomentar la siguiente línea para que se requiera autenticación para acceder a las asignaturas cuando este la conexion con la base de datos
-//Route::get('/nuevo-grupo', [NuevoGrupoController::class, 'index'])->name('nuevo-grupo')->middleware('auth');
 Route::get('/nuevo-grupo', [NuevoGrupoController::class, 'index'])->name('nuevo-grupo');
 Route::post('/nuevo-grupo', [NuevoGrupoController::class, 'store'])->name('nuevo-grupo');
 Route::get('/nuevo-grupo', [NuevoGrupoController::class, 'create'])->name('nuevo-grupo');

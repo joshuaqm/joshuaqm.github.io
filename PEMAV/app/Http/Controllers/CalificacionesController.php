@@ -66,7 +66,12 @@ class CalificacionesController extends Controller
             $promedioTotal += $promedioFormacionCivica;
             $contadorMaterias++;
         }
-        $promedioTotal = $promedioTotal / $contadorMaterias;
+        if($contadorMaterias == 0){
+            $contadorMaterias = 1;
+        }
+        else{
+            $promedioTotal = $promedioTotal / $contadorMaterias;
+        }
         
         $calificaciones = Calificaciones::where('id_alumno', $id_alumno)->get();
 
