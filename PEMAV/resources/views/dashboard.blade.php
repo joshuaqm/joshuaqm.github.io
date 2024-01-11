@@ -75,62 +75,62 @@
         <div class="row text-center">
         <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
             <a href="{{ route('asignatura', ['id_asignatura' => 1]) }}">
-                <img src="./images/imagen.jpg" alt="Imagen 1" class="img-fluid">
+                <img src="./images/1.jpg" alt="Imagen Español" class="img-fluid">
                 <p style="padding-top: 20px;">Español</p>
             </a>
         </div>
 
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 2]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/2.jpg" alt="Imagen Matemáticas" class="img-fluid">
                     <p style="padding-top: 20px;">Matemáticas</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 3]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 3" class="img-fluid">
+                    <img src="./images/3.jpg" alt="Imagen Habilidad Matemática" class="img-fluid">
                     <p style="padding-top: 20px;">Habilidad Matemática</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 4]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/4.jpg" alt="Imagen Habilidad Verbal" class="img-fluid">
                     <p style="padding-top: 20px;">Habilidad Verbal</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 5]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/5.jpg" alt="Imagen Física" class="img-fluid">
                     <p style="padding-top: 20px;">Física</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 6]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/6.jpg" alt="Imagen Química" class="img-fluid">
                     <p style="padding-top: 20px;">Química</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 7]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/7.jpg" alt="Imagen Biología" class="img-fluid">
                     <p style="padding-top: 20px;">Biología</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 8]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/8.jpg" alt="Imagen Historia" class="img-fluid">
                     <p style="padding-top: 20px;">Historia</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 9]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/9.jpg" alt="Imagen Geografía" class="img-fluid">
                     <p style="padding-top: 20px;">Geografía</p>
                 </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
                 <a href="{{ route('asignatura', ['id_asignatura' => 10]) }}">
-                    <img src="./images/imagen.jpg" alt="Imagen 2" class="img-fluid">
+                    <img src="./images/10.jpg" alt="Imagen Formación Cívica y Ética" class="img-fluid">
                     <p style="padding-top: 20px;">Formación Cívica y Ética</p>
                 </a>
             </div>
