@@ -14,6 +14,7 @@ use App\Http\Controllers\CrearUsuariosController;
 use App\Http\Controllers\CarrouselController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AgregarAlumnosController;
+use App\Http\Controllers\EstadisticasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,8 @@ Route::get('/show-image/{id}', [CarrouselController::class, 'showImage'])->name(
 Route::get('/agregar-alumnos/{id_grupo}', [AgregarAlumnosController::class, 'verDetalles'])->name('ver-detalles');
 Route::post('/agregar-alumnos/{id_grupo}/agregar-alumno/{id_alumno}', [AgregarAlumnosController::class, 'agregarAlumno'])->name('agregar-alumno');
 Route::post('/agregar-alumnos/{id_grupo}/eliminar-alumno/{id_alumno}', [AgregarAlumnosController::class, 'eliminarAlumno'])->name('eliminar-alumno');
+
+
+//estadisticasProfesor
+Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas.index');
+Route::get('/estadisticas-filtrar', [EstadisticasController::class, 'filtrar'])->name('estadisticas.filtrar');

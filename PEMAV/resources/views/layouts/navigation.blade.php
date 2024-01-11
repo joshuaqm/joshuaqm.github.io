@@ -43,7 +43,7 @@
                                 <a class="nav-link nav-option" href="{{ route('modificar-calificaciones')}}">Modificar calificaciones</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-option" href="{{ route('calificaciones')}}">Ver estadísticas</a>
+                                <a class="nav-link nav-option" href="{{ route('estadisticas.index')}}">Ver estadísticas</a>
                             </li>
                             @endif
                         </ul>

@@ -14,6 +14,9 @@ class NuevoExamenController extends Controller
     {
         $profesor = Auth::user()->id;
         $grupos = Grupo::where('id_profesor', $profesor)->get();
+        if (count($grupos) < 1) {
+            return redirect()->route('dashboard')->with('error', 'No tienes grupos registrados');
+        }
         $lista_alumnos = []; // Inicializa la variable lista_alumnos
         $id_asignatura = null;
         $grupoID = null;
@@ -27,7 +30,9 @@ class NuevoExamenController extends Controller
         $grupoID = $request->input('id_grupo');
         $id_asignatura = Grupo::where('id_grupo', $grupoID)->first()->id_asignatura;
         $lista_alumnos = ListaAlumnos::where('id_grupo', $grupoID)->get();
-
+        if(count($lista_alumnos) < 1){
+            return redirect()->route('dashboard')->with('error', 'No tienes alumnos registrados en este grupo');
+        }
         $profesor = Auth::user()->id;
         $grupos = Grupo::where('id_profesor', $profesor)->get();
 

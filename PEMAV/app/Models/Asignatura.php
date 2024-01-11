@@ -18,4 +18,9 @@ class Asignatura extends Model
         'id_asignatura',
         'nombre_asignatura',
     ];
+
+    public function grupos()
+    {
+        return $this->hasMany(Grupo::class, 'id_asignatura');
+    }
 }
