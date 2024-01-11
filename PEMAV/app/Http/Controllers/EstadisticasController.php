@@ -18,10 +18,11 @@ class EstadisticasController extends Controller
             $grupos = Grupo::where('id_profesor', $id_usuario)->get();
             $grupoFiltrado = null;
             $nombre_asignatura = null;
-            $id_grupo = 'No se ha seleccionado un grupo';
-            $calificaciones = null;
+            $id_grupo = Grupo::where('id_profesor', $id_usuario)->first()->id_grupo;
+            $calificaciones = Calificaciones::where('id_grupo', $id_grupo)->get();
+            $numero_examen = 0;
             return view('vistas-administrador.estadisticas', compact('grupos', 'grupoFiltrado', 'id_grupo', 
-            'nombre_asignatura', 'calificaciones'));
+            'nombre_asignatura', 'calificaciones', 'numero_examen'));
         }
         else{
             return view('vistas-administrador.estadisticas');
@@ -37,7 +38,9 @@ class EstadisticasController extends Controller
         $nombre_asignatura = $grupoFiltrado[0]->asignatura->nombre_asignatura;
 
         $calificaciones = Calificaciones::where('id_grupo', $id_grupo)->get();
+        $numero_examen = 0;
+
         return view('vistas-administrador.estadisticas', compact('grupoFiltrado', 'grupos', 'id_grupo', 
-        'nombre_asignatura', 'calificaciones'));
+        'nombre_asignatura', 'calificaciones', 'numero_examen'));
     }
 }
