@@ -23,7 +23,7 @@
         {{ session('success') }}
     </div>
 @endif
-@if (auth()->user()->role != '2')
+@if (auth()->user()->role == '0')
 <br>
     <div>
         <style>
@@ -41,12 +41,12 @@
         </style>
     <section class='container my-5'>
         <br>
-        <h1>Estadísticas</h1><br><br>
+        <h1>Calificaciones</h1><br><br>
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="card mb-3 mx-3">
                     <div class="card-title">
-                        <h4>Filtrar estadísticas por grupo</h4>
+                        <h4>Filtrar calificaciones por grupo</h4>
                     </div>
                     <div class="card-body">
                         <p>Seleccionar el grupo:</p>
@@ -109,89 +109,9 @@
                                         @endforeach
                                     </tr>
                                 @endforeach
-                                <tr>
-                                    <td></td> <!-- Celda vacía para alinear con las columnas de exámenes -->
-                                    @foreach($examenes as $calificacion)
-                                        <td>
-                                            <button class="btn btn-primary" onclick="mostrarGrafica({{ $calificacion['numero_examen'] }})">
-                                                Mostrar Gráfica
-                                            </button>
-                                        </td>
-                                    @endforeach
-                                </tr>
+                        
                             </tbody>
                         </table>                    
-                    </div>
-                </div>
-            </div>
-            <script>
-                function mostrarGrafica(numeroExamen) {
-                    // Filtrar las calificaciones por el número de examen
-                    if (@json($calificaciones) && @json($calificaciones) !== '[]') {
-                        var calificacionesFiltradas = @json($calificaciones)->filter(function(calificacion) {
-                            return calificacion.numero_examen === numeroExamen;
-                        });
-                        if (calificacionesFiltradas.length > 0) {
-                            // Crear un objeto para contar las calificaciones
-                            var calificacionesContadas = {};
-
-                            calificacionesFiltradas.forEach(function (calificacion) {
-                                var calificacionRedondeada = Math.round(calificacion.calificacion);
-                                calificacionesContadas[calificacionRedondeada] = (calificacionesContadas[calificacionRedondeada] || 0) + 1;
-                            });
-
-                            // Convertir el objeto a arrays para Chart.js
-                            var labels = Object.keys(calificacionesContadas);
-                            var data = Object.values(calificacionesContadas);
-
-                            // Crear la gráfica de pastel
-                            var ctx = document.getElementById('miGrafica');
-                            var myPieChart = new Chart(ctx, {
-                                type: 'pie',
-                                data: {
-                                    labels: labels,
-                                    datasets: [{
-                                        data: data,
-                                        backgroundColor: ['#FF5733', '#FFC300', '#DAF7A6', '#3498DB', '#AF7AC5'],
-                                    }],
-                                },
-                            });
-
-                            // Mostrar el modal con la gráfica de pastel
-                            $('#miModal').modal('show');
-                        } else {
-                            // Manejar el caso en el que no hay calificaciones disponibles para el número de examen dado
-                            console.log('No hay calificaciones disponibles para el número de examen dado');
-                        }
-                    } else {
-                        // Manejar el caso en el que no hay calificaciones disponibles en absoluto
-                        console.log('No hay calificaciones disponibles en absoluto');
-                    }
-                }
-            </script>
-            <p>{{$calificaciones}}</p>
-
-            <div class="col-md-6 mb-4 justify-content-center">
-                    <div class="card mb-3 mx-auto"> <!-- Agregada la clase mx-auto y limitado el ancho máximo -->
-                        <div class="card-title text-center">
-                            <h4 class="card-title mb-4">Gráfica de promedios:</h4>
-                        </div>
-                        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Gráfica de Pastel</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <canvas id="miGrafica"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
                     </div>
                 </div>
             </div>
