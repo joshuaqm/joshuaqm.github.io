@@ -6,6 +6,7 @@ use App\Models\Grupo;
 use Illuminate\Http\Request;
 use App\Models\Asignatura;
 use App\Models\User;
+use App\Models\Calificaciones;
 
 class NuevoGrupoController extends Controller
 {
@@ -103,6 +104,14 @@ class NuevoGrupoController extends Controller
     public function destroy($id)
     {
         $grupo = Grupo::findOrFail($id);
+
+        // Obtener las calificaciones asociadas al grupo
+        $calificaciones = Calificaciones::where('id_grupo', $id)->get();
+
+        // Eliminar cada calificación
+        foreach ($calificaciones as $calificacion) {
+            $calificacion->delete();
+        }
         $grupo->delete();
 
         return redirect()->route('nuevo-grupo')
